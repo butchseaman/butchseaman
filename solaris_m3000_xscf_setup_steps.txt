@@ -1,0 +1,215 @@
+Step by step configuration of the XSCF console for the Sun SPARC M3000 server.
+December 22, 2009
+By Andrew Lin 
+I installed the new SPARC M3000 server on the rack and powered it on. The M3000 can only be configured via the serial cable connected to the serial port for XSCF. Any windows computer with hyperterminal should be able to connect to it’s console. Once the XSCF interface has been configured with an IP address and telnet has been enabled, you can then connect to it remotely across the network with telnet.
+
+XSCF (eXtended System Control Facility is used to control, monitor, operate, and service SPARC Enterprise series servers and domains. You can power on/off the server (domain) via the XSCF interface. As long as the server is plugged into a power source the XSCF console will always be online even though the domain (server) is off. For those who are familiar with Windows servers, the XSCF is similar to the DRAC interface for Dell servers or HP Insight Manager.
+
+When you are connected to the XSCF console, you will be prompted for a login ID. The default ID is “default” and there is no password. With this ID you will need to create a new administrative ID. You also need to be standing close to the server for this process as you will be prompted to change the panel mode switch. If you do not create a new logon ID whenever you connect to the console or when the console session times out, you will be prompted to change the panel mode switch.
+
+login: default
+Change the panel mode switch to Locked and press return…
+Leave it in that position for at least 5 seconds. Change the panel mode switch
+to Service, and press return…
+
+Check the version of XSCF.
+
+XSCF> version -c xcp
+XSCF#0 (Active )
+XCP0 (Current): 1090
+XCP1 (Reserve): 1090
+
+Create a user andrew
+
+XSCF> adduser andrew
+XSCF> password
+password: Permission denied
+
+Change the password for andrew
+
+XSCF> password andrew
+New XSCF password:
+Retype new XSCF password:
+
+Grant andrew the following privileges, useradm, platadm, aplatop.
+
+XSCF> setprivileges andrew useradm platadm platop
+
+Here is a list of all available privileges.
+
+domainop@n
+• Can refer to the status of any hardware mounted in a domain_n.
+• Can refer to the status of any part of a domain_n.
+• Can refer to the information of all system boards mounted.
+
+domainmgr@n
+• Can power on, power off, and reboot a domain_n.
+• Can refer to the status of any hardware mounted in a domain_n.
+• Can refer to the status of any part of a domain_n.
+• Can refer to the information of all system boards mounted.
+
+platop
+• Can refer to the status of any part of the entire server but cannot change it.
+
+platadm
+• Control of the entire system
+• Can operate all hardware in the system.
+• Can configure all XSCF settings except the useradm and auditadm privilege settings.
+• Can add and delete hardware in a domain.
+• Can do the power operation of a domain.
+• Can refer to the status of any part of the entire server.
+
+useradm
+• Can create, delete, invalidate, and validate user accounts.
+• Can change user passwords and password profiles.
+• Can change user privileges.
+
+auditop
+• Can refer to the XSCF access monitoring status and monitoring methods.
+
+auditadm
+• Can monitor and control XSCF access.
+• Can delete an XSCF access monitoring method.
+
+fieldeng
+• Allows field engineers to perform the maintenance tasks or change the server configuration.
+
+None
+• When the local privilege for a user is set to none, that user has no privileges, even if the privileges
+for that user are defined in LDAP.
+• Setting a user’s privilege to none prevents the user’s privileges from being looked up in LDAP.
+
+XSCF firmware has two networks for internal communication. The Domain to Service Processor Communications Protocol (DSCP) network provides an internal communication link between the Service Processor and the Solaris domains. The Inter-SCF Network (ISN) provides an internal communication link between the two Service Processors in a high-end server.
+
+Configure DSCP with an IP address using the setdscp command.
+
+XSCF> setdscp
+DSCP network [0.0.0.0 ] > 10.1.1.0
+
+DSCP netmask [255.0.0.0 ] > 255.255.255.0
+
+XSCF address [10.1.1.1 ] >
+Domain #00 address [10.1.1.2 ] >
+Commit these changes to the database? [y|n] : y
+
+Configure the XSCF interface with an IP address, this will be the adress you connect to via telnet to manage the console.
+
+XSCF> setnetwork xscf#0-lan#0 -m 255.255.0.0. 162.10.10.11
+
+Enable the XSCF interface you just configured with an IP address of 162.10.10.11
+
+XSCF> setnetwork -c up lan#0
+
+Confiure the default route
+
+XSCF> setroute -c add -n 0.0.0.0 -g 162.10.10.1 xscf#0-lan#1
+XSCF> showroute -a
+Destination Gateway Netmask Flags Interface
+1622.10.0.0 * 255.255.0.0 U xscf#0-lan#0
+
+Configure the hostname.
+
+XSCF> sethostname xscf#0 paris
+
+Configure the domain name.
+
+XSCF> sethostname -d parishilton.com
+
+You must apply the network configurations with the applynetwork command.
+
+XSCF> applynetwork
+The following network settings will be applied:
+xscf#0 hostname :paris
+DNS domain name :parishilton.com
+
+interface : xscf#0-lan#0
+status :up
+IP address :162.10.10.11
+netmask :255.255.0.0
+route :
+
+interface : xscf#0-lan#1
+status :down
+IP address :
+netmask :
+route :
+
+Continue? [y|n] :yes
+
+Please reset the XSCF by rebootxscf to apply the network settings.
+Please confirm that the settings have been applied by executing
+showhostname, shownetwork, showroute and shownameserver after rebooting
+the XSCF.
+
+Now reboot XSCF for the configuration to take effect.
+
+XSCF> rebootxscf
+
+After the reboot check the network settings.
+
+XSCF> shownetwork -a
+xscf#0-lan#0
+Link encap:Ethernet HWaddr 00:0B:5D:E3:39:B4
+inet addr:162.10.10.11 Bcast:162.10.255.255 Mask:255.255.0.0
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+RX packets:13160 errors:0 dropped:0 overruns:0 frame:0
+
+TX packets:5 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:1943545 (1.8 MiB) TX bytes:210 (210.0 B)
+Base address:0xe000
+
+xscf#0-lan#1
+Link encap:Ethernet HWaddr 00:0B:5D:E3:39:B5
+BROADCAST MULTICAST MTU:1500 Metric:1
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:1000
+RX bytes:0 (0.0 B) TX bytes:0 (0.0 B)
+Base address:0xc000 
+
+Enable ssh, it will require a reboot.
+
+XSCF> setssh -c enable
+Continue? [y|n] :y
+Please reset the XSCF by rebootxscf to apply the ssh settings.
+
+Enable telnet. You probably do not need telnet if ssh is enabled.shownetwork
+
+XSCF> settelnet -c enable
+XSCF> showtelnet
+Telnet status: enabled
+
+It is much easier to configure and manage XSCF via https as you do not have to remember all the commands. I will show you how to enable https by creating a Web Server Certificate by constructing the self CA.
+
+First generate the web server private key. Remember the passphrase you will need it in the next step.
+
+XSCF> sethttps -c genserverkey
+Enter passphrase:
+Verifying – Enter passphrase:
+
+Create the self-signed web server certificate by speficying the DN.
+
+XSCF> sethttps -c selfsign CA Ontario Toronto CupidPost Technology Center andrew_lin@email.com
+CA key and CA cert already exist. Do you still wish to update? [y|n] :y
+Enter passphrase:
+Verifying – Enter passphrase:
+
+Now enable https.
+
+XSCF> sethttps -c enable
+Continue? [y|n] :y
+Please reset the XSCF by rebootxscf to apply the https settings.
+
+Reboot with the rebootxscf command,
+
+XSCF> rebootxscf
+The XSCF will be reset. Continue? [y|n] :y
+
+After the reboot you can connect to the XSCF console by telnet, ssh or https.
+
+
+
+
+
+http://docs.oracle.com/cd/E19867-01/E21618-01/Platform.html#50491450_25526

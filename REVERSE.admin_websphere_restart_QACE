@@ -1,0 +1,134 @@
+#!/bin/bash
+#
+######################################################################################
+#
+#<>< This script is for adminstartive restarts of WebSphere
+#<>< wseaman - 2015.04.02
+#<>< Modify include NSM / USAA - wseaman.2016.02.18
+#
+######################################################################################
+underline=`tput smul`
+nounderline=`tput rmul`
+bold=`tput bold`
+normal=`tput sgr0`
+black=`tput setaf 0`
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+blue=`tput setaf 4`
+magenta=`tput setaf 5`
+cyan=`tput setaf 6`
+white=`tput setaf 7`
+#
+clear;echo "";echo ""
+echo "${underline}${white}WebSphere Start/Stop Manager${nounderline} ${cyan}v3${normal}"
+DATE=`date +%Y.%m.%d"_"%H":"%M`
+USERNAME=svc_P8RQ_WASAdmin
+PASSWORD=KXpb\,C9SMRp5\]\*x
+USERNAME1=wasadmin
+PASSWORD1=was@dmin
+USERNAME2=svc_P8QA_USAAAdmin
+PASSWORD2=K7Nk\#dE2N\$z6td\&c
+#
+echo "";echo "";echo ""
+echo -e "${cyan}\tEnter Option number:${normal}"
+echo ""
+#
+select ANSWER in "${bold}WebSphere Status${normal} " "${green}Start AppSrv01${normal}" "${red}Stop AppSrv01${normal}" "${green}Start NSM${normal}" "${red}Stop NSM${normal}" "${green}Start USAA${normal}" "${red}Stop USAA${normal}" "${bold}Quit${normal}"
+        do
+        echo ""
+        case "$ANSWER" in
+#
+#
+        "${bold}WebSphere Status${normal} ")
+        echo ""
+        ps aux | ps aux | grep "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/properties" | grep -v grep > /dev/null
+        if [ $? -ne 0 ] ; then
+        echo "${underline}${red}AppSrv01 Profile Status - STOPPED${normal}${nounderline}"
+        else
+        echo "${underline}${green}AppSrv01 Profile Status - STARTED${normal}${nounderline}"
+        fi
+        /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/serverStatus.sh server1 -username $USERNAME -password $PASSWORD
+#
+echo "" ; echo ""
+#
+        ps aux | ps aux | grep "/opt/IBM/WebSphere/AppServer/profiles/NSM/properties" | grep -v grep > /dev/null
+        if [ $? -ne 0 ] ; then
+        echo "${underline}${red}NSM Profile Status - STOPPED${normal}${nounderline}"
+        else
+        echo "${underline}${green}NSM Profile Status - STARTED${normal}${nounderline}"
+        fi
+        /opt/IBM/WebSphere/AppServer/profiles/NSM/bin/serverStatus.sh server1 -username $USERNAME1 -password $PASSWORD1
+#
+echo "" ; echo ""
+#
+        ps aux | ps aux | grep "/opt/IBM/WebSphere/AppServer/profiles/USAA/properties" | grep -v grep > /dev/null
+        if [ $? -ne 0 ] ; then
+        echo "${underline}${red}USAA Profile Status - STOPPED${normal}${nounderline}"
+        else
+        echo "${underline}${green}USAA Profile Status - STARTED${normal}${nounderline}"
+        fi
+        /opt/IBM/WebSphere/AppServer/profiles/USAA/bin/serverStatus.sh server1 -username $USERNAME2 -password $PASSWORD2
+        echo "" ; echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+#
+        "${green}Start AppSrv01${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+        "${red}Stop AppSrv01${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1 -username $USERNAME -password $PASSWORD
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+##NSM
+        "${green}Start NSM${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/NSM/bin/startServer.sh server1
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+        "${red}Stop NSM${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/NSM/bin/stopServer.sh server1 -username $USERNAME1 -password $PASSWORD1
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+##USAA
+        "${green}Start USAA${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/USAA/bin/startServer.sh server1
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+        "${red}Stop USAA${normal}")
+        /opt/IBM/WebSphere/AppServer/profiles/USAA/bin/stopServer.sh server1 -username $USERNAME2 -password $PASSWORD2
+        echo ""
+        echo "Enter for menu options"
+        echo ""
+            ;;
+#
+#
+        "${bold}Quit${normal}")
+        echo ""
+        echo "Exiting ..."
+        echo ""
+            break
+            ;;
+        *) echo Invalid Option
+        echo "Enter for menu"
+        echo ""
+            ;;
+    esac
+done

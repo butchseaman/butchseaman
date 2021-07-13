@@ -1,0 +1,222 @@
+Solaris ZFS Quick Tutorial / Examples
+
+First, create a pool using 'zpool'. Then use 'zfs' to make the filesystems.
+
+Create a pool called pool1. The -m is optional. If given, it specifies a mount point for zfs filesystems created from the specified pool. The mount point should be empty or nonexistant. If the -m argument is omitted, mount point is "/".
+
+    # zpool create -m /export/data01 pool1 mirror c2t0d0 c4t0d0
+    # zpool status
+      pool: pool1
+     state: ONLINE
+     scrub: none requested
+    config:
+
+            NAME        STATE     READ WRITE CKSUM
+            pool1       ONLINE       0     0     0
+              mirror    ONLINE       0     0     0
+                c2t0d0  ONLINE       0     0     0
+                c4t0d0  ONLINE       0     0     0
+
+To list about pools:
+
+    # zpool list
+    NAME                    SIZE    USED   AVAIL    CAP  HEALTH  ALTROOT
+    pool1                   136G   18.2G    118G    13%  ONLINE     -
+
+
+To create a zfs filesystem:
+
+    # zfs create pool1/fs.001
+
+
+To set filesystem size:
+
+    # zfs set quota=24g pool1/fs.001
+
+
+The "zfs share -a" command makes all zfs filesystems that have the "sharenfs" property turned on automatically shared. It only has to be issued once and persists over a reboot. Alternatively, one can issue individual "zfs share" commands for specific filesystems:
+
+    # zfs share -a
+
+
+To make a filesystem sharable:
+
+    # zfs set sharenfs=on pool1/fs.001
+
+
+To list existing zfs filesystems:
+
+    # zfs list
+    NAME                   USED  AVAIL  REFER  MOUNTPOINT
+    pool1                 18.2G   116G  26.5K  /export/data01
+    pool1/fs.001          18.2G  5.85G  18.2G  /export/data01/fs.001
+
+
+To list all properties of a specific filesystem:
+
+    # zfs get all pool1/fs.001
+    NAME             PROPERTY       VALUE                      SOURCE
+    pool1/fs.001     type           filesystem                 -
+    pool1/fs.001     creation       Wed Sep 13 16:34 2006      -
+    pool1/fs.001     used           18.2G                      -
+    pool1/fs.001     available      5.85G                      -
+    pool1/fs.001     referenced     18.2G                      -
+    pool1/fs.001     compressratio  1.00x                      -
+    pool1/fs.001     mounted        yes                        -
+    pool1/fs.001     quota          24G                        local
+    pool1/fs.001     reservation    none                       default
+    pool1/fs.001     recordsize     128K                       default
+    pool1/fs.001     mountpoint     /export/data01/fs.001      
+inherited
+from pool1
+    pool1/fs.001     sharenfs       on                         local
+    pool1/fs.001     checksum       on                         default
+    pool1/fs.001     compression    off                        default
+    pool1/fs.001     atime          on                         default
+    pool1/fs.001     devices        on                         default
+    pool1/fs.001     exec           on                         default
+    pool1/fs.001     setuid         on                         default
+    pool1/fs.001     readonly       off                        default
+    pool1/fs.001     zoned          off                        default
+    pool1/fs.001     snapdir        hidden                     default
+    pool1/fs.001     aclmode        groupmask                  default
+    pool1/fs.001     aclinherit     secure                     default
+
+
+Here's an example of 'df':
+
+    # df -k -Fzfs
+    Filesystem         kbytes      used      avail  capacity  
+Mounted_on
+    pool1           140378112        26  121339726  1%
+/export/data01
+    pool1/fs.001     25165824  19036649    6129174  76%
+/export/data01/fs.001
+
+
+You can increase the size of a pool by adding a mirrored pair of disk drives:
+
+    # zpool add pool1 mirror c2t1d0 c4t1d0
+    # zpool status
+      pool: pool1
+     state: ONLINE
+     scrub: none requested
+    config:
+
+            NAME        STATE     READ WRITE CKSUM
+            pool1       ONLINE       0     0     0
+              mirror    ONLINE       0     0     0
+                c2t0d0  ONLINE       0     0     0
+                c4t0d0  ONLINE       0     0     0
+              mirror    ONLINE       0     0     0
+                c2t1d0  ONLINE       0     0     0
+                c4t1d0  ONLINE       0     0     0
+
+    # zpool list
+    NAME                    SIZE    USED   AVAIL    CAP  HEALTH
+ALTROOT
+    pool1                   272G   18.2G    254G     6%  ONLINE     -
+
+
+Note that "zpool attach" is a completely different command that adds multiway mirrors to increase redundancy but does not add extra space.
+
+Make some more filesystems:
+
+    # zfs create pool1/fs.002
+    # zfs set quota=20g pool1/fs.002
+    # zfs set sharenfs=on pool1/fs.002
+    # zfs create pool1/fs.003
+    # zfs set quota=30g pool1/fs.003
+    # zfs set sharenfs=on pool1/fs.003
+    # zfs create pool1/fs.004
+    # zfs set quota=190G pool1/fs.004
+    # zfs set sharenfs=on pool1/fs.004
+
+
+They show up in 'df':
+
+    # df -k -Fzfs -h
+    Filesystem             size   used  avail capacity  Mounted on
+    pool1                  268G    29K   250G     1%    /export/data01
+    pool1/fs.001            24G    18G   5.8G    76%    /export/data01/fs.001
+    pool1/fs.002            30G    24K    30G     1%    /export/data01/fs.002
+    pool1/fs.003            20G    24K    20G     1%    /export/data01/fs.003
+    pool1/fs.004           190G    24K   190G     1%    /export/data01/fs.004
+
+
+But don't look for them in /etc/vfstab:
+
+    # cat /etc/vfstab
+    #device           device             mount            FS    fsck mount   mount
+    #to_mount         to_fsck            point            type  pass at_boot options
+    #
+    fd                -                  /dev/fd          fd    -    no -
+    /proc             -                  /proc            proc  -    no -
+    /dev/dsk/c0t0d0s1 -                  -                swap  -    no -
+    /dev/dsk/c0t0d0s0 /dev/rdsk/c0t0d0s0 /                ufs   1    no -
+    /dev/dsk/c0t0d0s3 /dev/rdsk/c0t0d0s3 /var             ufs   1    no -
+    /devices          -                  /devices         devfs -    no -
+    ctfs              -                  /system/contract ctfs  -    no -
+    objfs             -                  /system/object   objfs -    no -
+    swap              -                  /tmp             tmpfs -    yes -
+
+
+Note that they are all shared because the share -a is in effect:
+
+    # share
+    -               /export/data01/fs.001   rw   ""
+    -               /export/data01/fs.002   rw   ""
+    -               /export/data01/fs.003   rw   ""
+    -               /export/data01/fs.004   rw   ""
+
+
+You can list zfs pools with:
+
+    # zfs list
+    NAME                   USED  AVAIL  REFER  MOUNTPOINT
+    pool1                 18.2G   250G  29.5K  /export/data01
+    pool1/fs.001          18.2G  5.85G  18.2G  /export/data01/gdos.001
+    pool1/fs.002          24.5K  30.0G  24.5K  /export/data01/gdos.002
+    pool1/fs.003          24.5K  20.0G  24.5K  /export/data01/gdos.003
+    pool1/fs.004          24.5K   190G  24.5K  /export/data01/gdos.004
+
+
+The disks are labeled and partitioned automatically by 'zpool':
+
+    # format
+    Searching for disks...done
+
+
+    AVAILABLE DISK SELECTIONS:
+           0. c0t0d0 <default cyl="cyl" 8851="8851" alt="alt" 2="2" hd="hd" 255="255" sec="sec" 63="63">
+              /pci@0,0/pcie11,4080@1/sd@0,0
+           1. c2t0d0 
+              /pci@6,0/pci13e9,1300@3/sd@0,0
+           2. c2t1d0 
+              /pci@6,0/pci13e9,1300@3/sd@1,0
+           3. c4t0d0 
+              /pci@6,0/pci13e9,1300@4/sd@0,0
+           4. c4t1d0 
+              /pci@6,0/pci13e9,1300@4/sd@1,0
+    Specify disk (enter its number):
+
+    partition> p
+    Current partition table (original):
+    Total disk sectors available: 286733069 + 16384 (reserved sectors)
+
+    Part      Tag    Flag     First Sector         Size         Last
+Sector
+      0        usr    wm                34      136.72GB
+286733069
+      1 unassigned    wm                 0           0               0
+      2 unassigned    wm                 0           0               0
+      3 unassigned    wm                 0           0               0
+      4 unassigned    wm                 0           0               0
+      5 unassigned    wm                 0           0               0
+      6 unassigned    wm                 0           0               0
+      8   reserved    wm         286733070        8.00MB
+286749453
+
+</default>
+
+Note that Solaris 10 cannot boot from a zfs filesystem. You may want to have a look at this tutorial on Mirroring system disks with Solaris Volume Manager / Disksuite. 

@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+####### This script is for automated restarts of WebSphere ####### REVERSE - wseaman - 2015.04.02 ####### Adding NSM and USAA wseaman - 2015.04.02 #######set -x clear;echo "";echo ""
+#
+MAIL_LIST=/home/cpe_os_user/usr/local/bin/email_list.txt
+DATE=`date +%Y.%m.%d"_"%H":"%M`
+HOSTNAME=`hostname`
+LOG=/tmp/websphere_restart.txt
+STATUS=$?
+REVERSE_USERNAME=svc_P8RU_WASAdmin
+REVERSE_PASSWORD=CmtY32\&D\@L\-\:4\;B
+USAA_USERNAME=svc_P8UAT_USAAAdmin
+USAA_PASSWORD=aarLq8\%\#uQ66s5s7
+NSM_USERNAME=P8TEST_CEDSUser
+NSM_PASSWORD=j\#239\@\#YHp
+#
+ #
+  #
+ #
+#
+echo "Automated restart log for $HOSTNAME on $DATE" > $LOG echo "" >> $LOG #  # echo "#################################################################################################" >> $LOG echo "" >> $LOG # Space in log file #  # #  #
+  #
+ #
+#
+####### Stop AppSrv01 / REVERSE
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/serverStatus.sh server1 -username $REVERSE_USERNAME -password $REVERSE_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1 -username $REVERSE_USERNAME -password $REVERSE_PASSWORD fi
+  #
+ #
+#
+####### Stop USAA
+/opt/IBM/WebSphere/AppServer/profiles/USAA/bin/serverStatus.sh server1 -username $USAA_USERNAME -password $USAA_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/USAA/bin/stopServer.sh server1 -username $USAA_USERNAME -password $USAA_PASSWORD fi
+  #
+ #
+#
+####### Stop NSM
+/opt/IBM/WebSphere/AppServer/profiles/NSM/bin/serverStatus.sh server1 -username $NSM_USERNAME -password $NSM_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/NSM/bin/stopServer.sh server1 -username $NSM_USERNAME -password $NSM_PASSWORD fi #  #  # # ####### Start AppSrv01 / REVERSE /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/serverStatus.sh server1 -username $REVERSE_USERNAME -password $REVERSE_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1 -username $REVERSE_USERNAME -password $REVERSE_PASSWORD echo " AppSrv01" >> $LOG tail -1 #echo /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log >> $LOG sleep 10 /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG else # echo " AppSrv01" >> $LOG /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG fi echo "" >> $LOG echo "#################################################################################################" >> $LOG echo "" >> $LOG
+  #
+ #
+#
+####### Start USAA
+/opt/IBM/WebSphere/AppServer/profiles/USAA/bin/serverStatus.sh server1 -username $USAA_USERNAME -password $USAA_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/USAA/bin/stopServer.sh server1 -username $USAA_USERNAME -password $USAA_PASSWORD echo " USAA" >> $LOG tail -1 sleep 10 /opt/IBM/WebSphere/AppServer/profiles/USAA/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/USAA/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG # else # echo " USAA" >> $LOG /opt/IBM/WebSphere/AppServer/profiles/USAA/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/USAA/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG fi echo "" >> $LOG echo "#################################################################################################" >> $LOG echo "" >> $LOG
+  #
+ #
+#
+####### Start NSM
+/opt/IBM/WebSphere/AppServer/profiles/NSM/bin/serverStatus.sh server1 -username $NSM_USERNAME -password $NSM_PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/NSM/bin/stopServer.sh server1 -username $NSM_USERNAME -password $NSM_PASSWORD echo " NSM" >> $LOG tail -1 sleep 10 /opt/IBM/WebSphere/AppServer/profiles/NSM/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/NSM/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG # else echo " NSM" >> $LOG /opt/IBM/WebSphere/AppServer/profiles/NSM/bin/startServer.sh server1 sleep 10 cat /opt/IBM/WebSphere/AppServer/profiles/NSM/logs/server1/SystemOut.log | grep WsServerImpl | tail -1 >> $LOG fi echo "" >> $LOG echo "#################################################################################################" >> $LOG echo "" >> $LOG #  #
+  #
+ #
+#
+for NOTIFY in `cat $MAIL_LIST`
+do
+cat $LOG | mail -s "`hostname` automated restart " $NOTIFY done

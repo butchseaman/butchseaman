@@ -1,0 +1,92 @@
+#!/bin/ksh -x
+# Source the users .profile, so ssh and scp will work (from cron).
+
+##################################################################
+# Firstam-file-transfer.ksh
+#
+# Function:  Transfers files to First American using sftp
+#
+#
+# Author:  creed
+#
+##################################################################
+#  4/21/09 - Added dates to log names to separate log files which
+#            will be used for error checking. -Scott Eicher
+##################################################################
+
+# Default parameters
+SCRIPT_DIR=/usr/local/lc/bin
+LOGDIR=/var/log/lc
+## OUTGOING_DIR='/mnt/VOL1/SHARED/Reporting*Systems/FA_HMP_Daily/FA_OutBox'
+OUTGOING_DIR=/data/lc/out
+## ARCHIVE_DIR='/mnt/VOL1/SHARED/Reporting*Systems/FA_HMP_Daily/arch'
+ARCHIVE_DIR=/data/lc/arch
+FTPDEST=sftp.myloancare.com
+# ACCOUNT=fhtest
+# PASSWD=venture
+# The following account name and password is for production
+ ACCOUNT=metlife
+# PASSWD="Vpr1521s"
+ PASSWD="Daadfdis12dasdvx"
+LOGFILE=/var/log/lc/transfer.log
+FTPAGE=/usr/local/bin/ftpage
+TIMEOUT=300
+SLEEPTIME=210
+
+# Clean up log file
+
+mv $LOGFILE $LOGFILE.`date +%m%d`
+
+# Check for files - if none then exit
+
+date >> $LOGFILE
+
+ls -lt $OUTGOING_DIR/LC*
+
+STATUS=$?
+
+if (( $STATUS >= 1 ))
+ then
+  echo "NO files to transfer\n" >> $LOGFILE
+##  mail -s "Loan Care files failed on krayt" cereed@metlife.com -c ctillery@metlife.com < $LOGFILE
+  exit
+ else
+ echo "Sending file(s) `$OUTGOING_DIR/LC*` to Loan Care\n"
+fi
+
+
+
+        # FTP the file
+        /usr/bin/expect <<-ENDIT >> $LOGFILE 2>&1
+                set timeout $TIMEOUT
+                spawn /usr/bin/sftp $ACCOUNT@$FTPDEST
+                expect {
+                        "word:" {send "$PASSWD\r" }
+                        timeout {exit 1}
+                }
+                expect {
+                        "*ftp>" {send "cd deliver \r"}
+                        timeout {exit 1}
+                }
+                expect {
+                        "*ftp>" {send "mput $OUTGOING_DIR/LC* \r"}
+                        timeout {exit 1}
+                }
+                expect {
+                        "*ftp> " {send "quit"}
+                        timeout {exit 1}
+                }
+        ENDIT
+
+ERRCNT=$( grep -c 100\% $LOGFILE )
+
+
+if [ $ERRCNT -ge 1 ]
+then
+        mail -s "LoanCare files sent successfully from krayt" cereed@metlife.com -c ctillery@metlife.com < $LOGFILE
+        # do cleanup
+        mv $OUTGOING_DIR/LC* $ARCHIVE_DIR
+else
+        mail -s "LoanCare files failed on krayt" cereed@metlife.com -c ctillery@metlife.com < $LOGFILE
+fi
+

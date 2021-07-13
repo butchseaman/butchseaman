@@ -1,0 +1,18 @@
+YUM_To_Install_RPM_Packages_with_Dependencies
+
+mount /dev/cdrom /mnt <-- mount cdrom
+cd /etc/yum.repos.d <-- Go directory  /etc/yum.repos.d
+vi cd.repo <-- Create cd.repo file with VI
+
+Write following lines to this file and save it.
+[cd]
+name=CD
+baseurl=file:///mnt/Server
+enabled=1
+gpgcheck=0
+
+yum repolist <-- verify
+yum list <-- You can see rpm list
+
+
+

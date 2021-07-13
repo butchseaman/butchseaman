@@ -1,0 +1,572 @@
+
+ESXENGTOOLS
+hacluster:x:90:90:heartbeat processes:/var/lib/heartbeat/cores/hacluster:/bin/false
+CAAdmin:x:1024:100:CA Admin:/home/CAAdmin:/bin/bash
+amiller:x:1030:100::/home/amiller:/bin/bash
+bnsander:x:1022:100:Baron Sanders:/home/bnsander:/bin/bash
+carogers:x:1006:100:Cynthia Rogers:/home/carogers:/bin/bash
+cwalker:x:1034:100::/home/cwalker/:/bin/bash
+dherring:x:1005:100:Daniel Herring:/home/dherring:/bin/bash
+grodrigu:x:1012:100:Gabriel Rodriguez:/home/grodrigu:/bin/bash
+hcook:x:1023:100:Rick Cook:/home/hcook:/bin/bash
+jcorneli:x:1014:100:John Cornelius:/home/jcorneli:/bin/bash
+jgoerner:x:1019:100:Jeremy Goerner:/home/jgoerner:/bin/bash
+jhuckaba:x:1003:100:Jason Huckaba:/home/jhuckaba:/bin/bash
+jhundt:x:1016:100:Justin Hundt:/home/jhundt:/bin/bash
+jpearson:x:1028:100:Tim Pearson:/home/jpearson:/bin/bash
+jrektori:x:1033:100:Jay Rektorik:/home/jrektori:/bin/bash
+jwilkins:x:1031:100::/home/jwilkins:/bin/bash
+keith:x:1026:100:Keith Grandin:/home/keith:/bin/bash
+kgrandin:x:1013:100:Keith Grandin:/home/kgrandin:/bin/bash
+klocwork:x:1009:100:KlocWork:/home/klocwork:/bin/bash
+lsmother:x:1021:100:Lewis Smotherman:/home/lsmother:/bin/bash
+mike:x:1025:100:Mike Robb:/home/mike:/bin/bash
+mjones:x:1017:100:Mitch Jones:/home/mjones:/bin/bash
+nfoster:x:1011:1003:Nicholaus Foster:/home/nfoster:/bin/bash
+rjohnson:x:1020:100:Robyn Johnson:/home/rjohnson:/bin/bash
+rt:x:1008:1000:::
+rt2_tool:x:1004:100:rt2_tool:/home/rt2_tool:/bin/bash
+rt_tool:x:1015:100::/home/rt_tool:/bin/bash
+rwright:x:1018:100:Reatina Wright:/home/rwright:/bin/bash
+sbruman:x:1010:100:Shawn M. Bruman:/home/sbruman:/bin/bash
+sospina:x:1027:100:Steven Ospina:/home/sospina:/bin/bash
+vtaylor:x:1035:100:Victor Taylor:/home/vtaylor:/bin/bash
+webadmin:x:1001:100:WebAdmin:/home/webadmin:/bin/bash
+wgreenwa:x:1002:100:Will Greenway:/home/wgreenwa:/bin/bash
+wmachalica:x:1029:100:Wes Machalica:/home/wmachalica:/bin/bash
+wseaman:x:1036:100::/home/wseaman:/bin/bash
+
+ENGSRV
+cvs:x:1001:108::/vercon:/bin/false
+dcornwell:x:1006:109::/home/dcornwell:/bin/bash
+oh58:x:1007:102::/home/oh58:/bin/bash
+mrobb:x:1008:101::/home/mrobb:/bin/bash
+scline:x:1009:103::/home/scline:/bin/bash
+vxworks:x:1011:104::/home/vxworks:/bin/bash
+ktrost:x:1017:103::/home/ktrost:/bin/bash
+mbridges:!:1020:101::/home/mbridges:/bin/bash
+thpu2:x:1023:107::/home/thpu2:/bin/bash
+gnewman:x:1025:101::/home/mrobb/webserver/htdocs/users/gnewman:/bin/bash
+knguyen:x:1027:10::/home/knguyen:/bin/bash
+smcmanus:x:1028:103::/home/smcmanus:/bin/bash
+jhouston:x:1030:10::/home/jhouston:/bin/bash
+dleranth:x:1031:10::/home/dleranth:/bin/bash
+jaskew:x:1032:109::/home/jaskew:/bin/bash
+ejacobse:x:1035:112::/home/ejacobse:/bin/bash
+jrogers:x:1036:103::/home/jrogers:/bin/bash
+lsaenz:x:1037:101::/home/lsaenz:/bin/bash
+smarsh:x:1039:103::/home/smarsh:/bin/bash
+carogers:!:1040:112::/home/carogers:/bin/bash
+pakundi:!:1041:103::/home/pakundi:/bin/bash
+spatterson:x:1099:103::/home/spatterson:/bin/bash
+jsegars:x:1042:111::/home/jsegars:/bin/bash
+dnguyen:x:1043:103::/home/dnguyen:/bin/bash
+rcatalon:!:1044:103::/home/rcatalon:/bin/bash
+moody:x:1046:103::/home/moody:/bin/bash
+ply:x:1048:101::/home/ply:/bin/bash
+wmachalica:x:1049:11001::/home/wmachalica:/bin/bash
+jrider:x:1050:103::/home/jrider:/bin/bash
+kgrandin:x:1038:112::/home/kgrandin:/bin/bash
+rholt:x:1052:114::/home/rholt:/bin/bash
+surbach:x:1053:114::/home/surbach:/bin/bash
+strine:x:1054:114::/home/strine:/bin/bash
+jcoke:x:1055:114::/home/jcoke:/bin/sh
+ssmith:x:1056:112::/home/ssmith:/bin/bash
+aghadiri:x:1057:114::/home/aghadiri:/bin/bash
+vvillabo:x:1058:112::/home/vvillabo:/bin/bash
+nbendavi:x:1059:112::/home/nbendavi:/bin/bash
+jlong:x:15000:1::/home/jlong:/bin/bash
+mrogers:!:1060:10::/home/mrogers:/bin/bash
+mjones:x:1061:103::/home/mjones:/bin/bash
+ddolezal:x:1062:112::/home/ddolezal:/bin/bash
+lbriggs:x:1063:117::/home/lbriggs/:/bin/bash
+ddryden:x:1014:10::/home/ddryden:/bin/bash
+dstayska:x:50003:100::/home/dstayska:/bin/bash
+jjankows:x:1065:112::/home/jjankows:/bin/bash
+roking:x:1066:110003::/home/roking:/bin/bash
+sjohnson:x:1067:11001::/home/sjohnson:/bin/bash
+jhuckaba:x:1068:1::/home/jhuckaba:/bin/bash
+lbutler:x:1069:1::/home/lbutler:/bin/bash
+ccoffin:!:1071:103::/home/ccoffin:/bin/bash
+infodba:x:102:200::/home/infodba:/bin/sh
+kdavidso:x:1072:117::/home/kdavidson:/bin/bash
+sbritton:x:1005:1::/home/sbritton:/bin/bash
+acheung:x:1074:1::/home/acheung:/bin/bash
+jtran:x:1026:116::/home/jtran:/bin/bash
+bbuce:x:1076:112::/home/bbuce:/bin/bash
+rozark:x:1o77:10::/home/rozark:/bin/bash
+pallison:!:1079:1::/home/pallison:/bin/bash
+cottonc:x:1081:1::/home/cottonc:/bin/bash
+ebresie:!:1082:117::/home/ebresie:/bin/bash
+jweaver:x:1084:1::/home/jweaver:/bin/bash
+dopitz:x:1085:116::/home/dopitz:/bin/bash
+jgrizzel:x:1086:103::/home/jgrizzel:/bin/bash
+vwood:!:1088:103::/home/vwood:/bin/bash
+useradd:x:100:14::/home/useradd:/bin/pfsh
+sdejournett:x:103:11004:Software Engineer:/home/sdejournett:/bin/sh
+Software_Engineer:x:104:14::/home/Software_Engineer:/bin/pfsh
+jbandy:x:105:116::/home/jbandy:/bin/bash
+cabright:x:106:0::/home/cabright:/bin/sh
+mambrose:x:107:103::/home/mambrose:/bin/sh
+dderr:x:108:108::/home/dderr:/bin/sh
+ascrivner:x:109:1::/home/ascrivner:/bin/bash
+srivera:x:110:1::/home/srivera:/bin/sh
+ddroll:x:111:1::/home/ddroll:/bin/sh
+sbruman:x:112:1::/home/sbruman:/bin/sh
+adas:x:50004:103::/home/adas:/bin/bash
+btran:x:1000:117:Brian Tran:/home/btran:/bin/csh
+prouschmann:x:1900:103:Peter Rouschmann:/home/prouschmann:/bin/csh
+vtaylor:x:1002:117:Victor Taylor:/home/vtaylor:/bin/csh
+gmcreyno:x:1003:117:Glen McReynolds:/home/gmcreyno:/bin/bash
+jgoerner:x:1004:103:Jeremy Goerner:/home/jgoerner:/bin/bash
+rcook:!:10010:103:Rick Cook:/home/rcook:/bin/bash
+tpearson:x:10030:103:Tim Pearson:/home/tpearson:/bin/bash
+CAAdmin:x:11111:0:CA admin:/home/CAAdmin:/bin/bash
+zabbix:x:10019:0:::/bin/bash
+morrisc:x:50005:10::/home/morrisc:/bin/bash
+wseaman:x:50006:10::/export/home/wseaman:/bin/bash
+sospina:x:50007:1::/home/sospina:/bin/bash
+jrektori:x:50008:103::/home/jrektori:/bin/bash
+
+RAPTOR
+rpc:x:32:32:Portmapper RPC user:/:/sbin/nologin
+vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+pcap:x:77:77::/var/arpwatch:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+avahi-autoipd:x:100:101:avahi-autoipd:/var/lib/avahi-autoipd:/sbin/nologin
+distcache:x:94:94:Distcache:/:/sbin/nologin
+postgres:x:26:26:PostgreSQL Server:/var/lib/pgsql:/bin/bash
+webalizer:x:67:67:Webalizer:/var/www/usage:/sbin/nologin
+dovecot:x:97:97:dovecot:/usr/libexec/dovecot:/sbin/nologin
+named:x:25:25:Named:/var/named:/sbin/nologin
+gdm:x:42:42::/var/gdm:/sbin/nologin
+sabayon:x:86:86:Sabayon user:/home/sabayon:/sbin/nologin
+oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin
+cardwell:x:1094:100:Sam Cardwell:/home/cardwell:/bin/bash
+hlam:x:1107:100:Hai Lam:/home/hlam:/bin/bash
+tavana:x:2814:100:Shidan Tavana:/home/tavana:/bin/bash
+V5build:x:3106:100:V5build:/home/V5build:/bin/bash
+barrett:x:1053:100:V5build:/home/barrett:/bin/bash
+rothrock:x:1216:100:Scott Rothrock:/home/rothrock:/bin/bash
+idm9bld:x:4000:100:idm9bld:/home/idm9bld:/bin/bash
+eurocopter:x:60017:100:eurocopter:/home/eurocopter:/bin/bash
+uae:x:60018:100:uae:/home/uae:/bin/bash
+idm70builder:x:60012:100:idm70builder:/home/idm70builder:/bin/bash
+stutts:x:1045:100:Chris Stutts:/home/stutts:/bin/bash
+gsmith:x:32016:100:Greg Smith:/home/gsmith:/bin/bash
+hayes:x:1186:100:Allan Hayes:/home/hayes:/bin/bash
+guzzi:x:1150:100:Angela Guzzi:/home/guzzi:/bin/bash
+vobadm:x:1000:100:VOB Administrator:/home/vobadm:/bin/bash
+tester:x:2817:100:tester:/home/tester:/bin/bash
+mott:x:32013:100:Ned Mott:/home/mott:/bin/bash
+watanabe:x:1315:100:Darryl Watanabe:/home/watanabe:/bin/bash
+sjames:x:1327:100:Scott James:/home/sjames:/bin/bash
+jlehew:x:10500:100:Joshua Lehew:/home/jlehew:/bin/bash
+rdaniels:x:1329:100:Ryan Daniels:/home/rdaniels:/bin/bash
+xu:x:11174:100:Fang Xu:/home/xu:/bin/bash
+idmsim:x:5555:100:IDM Simulator:/home/idmsim:/bin/bash
+asdcbld:x:60091:100::/home/asdcbld:/bin/bash
+milano:x:2821:2501:Scott Milano:/home/milano:/bin/bash
+
+SOLO
+barrett:x:1053:1:Rich Barrett:/home/barrett:/bin/tcsh
+rogers:x:1025:1:Doug Rogers:/home/rogers:/bin/bash
+tavana:x:2814:1:Shidan Tavana:/home/tavana:/bin/tcsh
+seeger:x:1138:1:Joe Seeger:/home/seeger:/bin/bash
+nielsen:x:1222:1:Jens Nielsen:/home/nielsen:/bin/tcsh
+salvano:x:1235:1:Dan Salvano:/home/salvano:/bin/tcsh
+bbuser:x:60010:100:Big Brother Account:/home/bbuser:/bin/bash
+mkpcidm:x:7000:1:PCIDM Build Login:/home/mkpcidm:/bin/tcsh
+briskin:x:2223:100::/home/briskin:/bin/tcsh
+patel:x:1279:100:Priti Patel:/home/patel:/bin/bash
+bomberger:x:32012:100:Brock Bomberger:/home/bomberger:/bin/bash
+han:x:1123:1::/home/han:/bin/tcsh
+idm9bld:x:4000:1:IDM 9 Builder:/home/idm9bld:/bin/bash
+svnadmin:x:7001:0:Subversion Administrator:/home/svnadmin:/bin/bash
+overton:x:294:100:Ed Overton:/home/overton:/bin/bash
+sshd:x:60011:203:sshd privsep:/var/empty:/bin/false
+sriddle:x:32048:100:Stephen Riddle:/home/sriddle:/bin/bash
+yan:x:28921:100:Ray Yan:/home/yan:/bin/bash
+wseaman:x:60012:100::/export/home/wseaman/:/bin/bash
+
+LINTEST
+zope:x:64:102:Zope:/opt/zope:/bin/false
+pop:x:67:100:POP admin:/var/lib/pop:/bin/false
+tomcat:x:100:101:Tomcat - Apache Servlet/JSP Engine:/usr/share/tomcat:/bin/bash
+privoxy:x:102:104:Daemon user for privoxy:/var/lib/privoxy:/bin/false
+vdr:x:104:33:Video Disk Recorder:/var/spool/video:/bin/false
+distcc:x:105:106:Distcc Daemon:/etc/distcc:/bin/false
+rozark:x:1000:100:Robert Ozark:/home/rozark:/bin/bash
+webmaster:x:1001:8:webmaster:/home/webmaster:/bin/bash
+hheard:x:1002:0:Harold Heard:/home/hheard:
+
+ESXSLES
+hacluster:x:90:90:heartbeat processes:/var/lib/heartbeat/cores/hacluster:/bin/false
+CCADMIN:x:1009:1002:ClearCase Administrator:/home/CCADMIN:/bin/bash
+acheung:x:1012:1003:Arlene Cheung:/home/acheung:/bin/bash
+adas:x:1054:1003:Das Amitabha:/home/adas:/bin/bash
+ahernandez:x:1078:1003:Anthony Hernandez:/home/ahernandez:/bin/bash
+ahull:x:1067:100:Andrew Hull:/home/ahull:/bin/bash
+amiller:x:1082:1003:Austin Miller:/home/amiller:/bin/bash
+bbuce:x:1070:100:Brad Buce:/home/bbuce:/bin/bash
+btran:x:1059:100:Brian Tran:/home/btran:/bin/bash
+carogers:x:1030:100:Cynthia Rogers:/home/carogers:/bin/bash
+ccoffin:x:1028:1007:Chris Coffin:/home/ccoffin:/bin/bash
+ccotton:x:1049:1003:Clyde Cotton:/home/ccotton:/bin/bash
+cctest:x:1011:100:Clearcase Test User:/home/cctest:/bin/bash
+clearcase_albd:x:1010:1002:Clearcase Broker Daemon:/home/clearcase_albd:/bin/bash
+dderr:x:1045:1003:David Derr:/home/dderr:/bin/bash
+ddroll:x:1058:1000:Daniel Droll:/home/ddroll:/bin/bash
+dhague:x:1080:100:David Hague:/home/dhague:/bin/bash
+dhanson:x:1043:1003:David Hanson:/home/dhanson:/bin/bash
+dherring:x:1005:2011:Daniel Herring:/home/dherring:/bin/bash
+dlaughli:x:1032:1007:Doug Laughlin:/home/dlaughli:/bin/bash
+dleranth:x:1018:1003:David Leranth:/home/dleranth:/bin/bash
+dopitz:x:1008:100:Derek Opitz:/home/dopitz:/bin/bash
+dstayskal:x:1001:1000:Dann Stayskal:/home/dstayskal:/bin/bash
+ebresie:x:1044:1003:Eric Bresie:/home/ebresie:/bin/bash
+ehereford:x:1076:100:Eric Hereford:/home/ehereford:/bin/bash
+ejacobse:x:1031:1003:Erin Jacobsen:/home/ejacobse:/bin/bash
+ekrohne:x:1055:1007:Ed Krohne:/home/ekrohne:/bin/bash
+eleidhol:x:1072:100:Eric Leidholt:/home/eleidhol:/bin/bash
+gmcreynolds:x:1047:1003:Glen McReynolds:/home/gmcreynolds:/bin/bash
+gnewman:x:1021:1003:Greg Newman:/home/gnewman:/bin/bash
+grodrigu:x:1063:100:Gabriel Rodriguez:/home/grodrigu:/bin/bash
+hcook:x:1071:100:Rick Cook:/home/hcook:/bin/bash
+jbanks:x:1041:100:James Banks:/home/jbanks:/bin/bash
+jcornelius:x:1042:2013:John Cornelius:/home/jcornelius:/bin/bash
+jfonteno:x:1081:100:Jeri Fontenot:/home/jfonteno:/bin/bash
+jgoerner:x:1060:1005:Jeremy Goerner:/home/jgoerner:/bin/csh
+jhuckaba:x:1034:1003:Jason Huckaba:/home/jhuckaba:/bin/bash
+jhundt:x:1073:100:Justin Hundt:/home/jhundt:/bin/bash
+jjankows:x:1007:100:Jim Jankowski:/home/jjankows:/bin/bash
+jlehew:x:1056:100:Joshua Lehew:/home/jlehew:/bin/ksh
+jpearson:x:1053:1003:John Pearson:/home/jpearson:/bin/bash
+jrider:x:1039:100:Jamey Rider:/home/jrider:/bin/bash
+jtran:x:1051:1003:Jennifer Tran:/home/jtran:/bin/bash
+jwilkins:x:1083:1003:John Wilkinson:/home/jwilkins:/bin/bash
+kdavidso:x:1052:100:Karen Davidson:/home/kdavidso:/bin/bash
+kgrandin:x:1000:100:Keith Grandin:/home/kgrandin:/bin/bash
+khawley:x:1069:100:Kevin Hawley:/home/khawley:/bin/bash
+ktrost:x:1023:1007:Kim trost:/home/ktrost:/bin/bash
+lbriggs:x:1033:1003:Leslie Briggs:/home/lbriggs:/bin/bash
+lbutler:x:1002:1003:Larry Butler:/home/lbutler:/bin/bash
+lchyr:x:1066:100:Leigha Chyr:/home/lchyr:/bin/bash
+lkeithley:x:1026:1003:Linda Keithley:/home/lkeithley:/bin/bash
+lsmother:x:1077:1007:Lewis Smotherman:/home/lsmother:/bin/bash
+mambrose:x:1046:2013:Michael Ambrose:/home/mambrose:/bin/bash
+mbridges:x:1027:1003:Melanie Bridges:/home/mbridges:/bin/bash
+mjones:x:1017:1007:Mitch Jones:/home/mjones:/bin/bash
+mlane:x:1064:100:Mark Lane:/home/mlane:/bin/bash
+mrobb:x:1022:1003:Mike Robb:/home/mrobb:/bin/bash
+nstibbens:x:1050:1003:Nancy Stibbens:/home/nstibbens:/bin/bash
+oisaula:x:1065:1003:Oscar Isaula:/home/oisaula:/bin/bash
+pakundi:x:1006:1003:Pavani Akundi:/home/pakundi:/bin/bash
+pallison:x:1075:100:Patrick Allison:/home/pallison:/bin/bash
+proschma:x:1061:100:Pete Roschmann:/home/proschma:/bin/bash
+rwright:x:1074:100:Reatina Write:/home/rwright:/bin/bash
+sbruman:x:1003:1000:Shawn Bruman:/home/sbruman:/bin/bash
+scline:x:1015:1003:Sue Cline:/home/scline:/bin/bash
+sdejournett:x:1004:1000:Stewart DeJournett:/home/sdejournett:/bin/bash
+sharder:x:1038:100:Stephanie Harder:/home/sharder:/bin/bash
+smarsh:x:1024:1003:Steve Marsh:/home/smarsh:/bin/bash
+smcmanus:x:1020:1003:Sid Mcmanus:/home/smcmanus:/bin/bash
+sospina:x:1079:100:Steven Ospina:/home/sospina:/bin/bash
+spatters:x:1016:1007:Scott Patterson:/home/spatters:/bin/bash
+srivera:x:1019:1003:Sandy Rivera:/home/srivera:/bin/bash
+srsmith:x:1057:100:Steve Smith:/home/srsmith:/bin/bash
+tsharpe:x:1040:100:Tim Sharpe:/home/tsharpe:/bin/bash
+uagent:x:1014:2500:BrightStor Agent:/home/uagent:/bin/bash
+useradmin:x:1013:100:User Admin:/home/useradmin:/bin/bash
+vtaylor:x:1062:1003:Victor Taylor:/home/vtaylor:/bin/bash
+vwood:x:1025:1003:Vincent Wood:/home/vwood:/bin/bash
+wgreenwa:x:1037:100:Will Greenway:/home/wgreenwa:/bin/bash
+wmachali:x:1048:1003:Wes Machalica:/home/wmachali:/bin/bash
+wmereck:x:1068:100:Wayne Merick:/home/wmereck:/bin/bash
+
+SHEMP
+ddts:x:1100:10:DDTS Account:/d2/usr/home/ddts:/bin/tcsh
+maturo:x:1172:10:Richard Maturo:/:/bin/tcsh
+builder:x:19999:100:Builder Account:/d2/usr/home/builder:/bin/tcsh
+bbuser:x:60003:100:Big Brother:/d2/usr/home/bbuser:/bin/ksh
+bomberger:x:32012:100:Brock Bomberger:/d2/usr/home/bomberger:/bin/bash
+granado:x:32099:100:Jesse Granado:/d2/home/granado:/bin/bash
+hayes:x:1186:100:Allan Hayes:/d2/usr/home/hayes:/bin/bash
+
+ESAINTEL
+wwwrun:x:30:8:ESAIntel:/var/lib/wwwrun:/bin/false
+archive:x:1001:100:archive:/home/archive:/bin/bash
+webmaster:x:1000:100:webmaster:/home/webmaster:/bin/bash
+tomcat:x:103:106:Tomcat:/usr/share/tomcat5:/bin/sh
+
+IADCMP001
+rtkit:x:105:106:RealtimeKit:/proc:/bin/false
+rothrock:x:1000:2501:rothrock:/home/rothrock:/bin/bash
+watanabe:x:1001:2501::/home/watanabe:/bin/bash
+guzzi:x:1002:2501::/home/guzzi:/bin/bash
+zkang:x:1003:2501::/home/zkang:/bin/bash
+hayes:x:1005:2501::/home/hayes:/bin/bash
+cttran:x:1006:2501::/home/cttran:/bin/bash
+milano:x:2821:2501::/home/milano:/bin/bash
+amaizlin:x:2822:2501::/home/amaizlin:/bin/bash
+maizlin:x:2823:2501::/home/maizlin:/bin/bash
+jberman:x:2824:2501::/home/jberman:/bin/bash
+
+IADCCNASP001
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+rpc:x:32:32:Portmapper RPC User:/:/sbin/nologin
+ais:x:39:39:openais Standards Based Cluster Framework:/sbin/nologin:/sbin/nologin
+nut:x:57:57:Network UPS Tools:/var/lib/ups:/sbin/nologin
+vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin
+emerge:x:70:70:Conary emerge build user:/var/conary/emerge:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+smolt:x:86:86::/usr/share/smolt:/bin/nologin
+openfiler:x:94:94:Openfiler Administrator:/opt/openfiler/:/opt/openfiler/bin/ofconfig
+ofguest:x:96:96:Openfiler Guest User:/mnt/openfiler/:/sbin/nologin
+bacula:x:105:105:Bacula:/var/bacula/:/sbin/nologin
+hacluster:x:106:106:Heartbeat haclient User:/var/lib/heartbeat/cores/hacluster:/sbin/nologin
+nutmon:x:107:107:nut UPS monitoring:/etc/ups/:/sbin/nologin
+sfcb:x:117:117:sfcb user:/:/sbin/nologin
+riak:x:497:497:Riak Server:/var/lib/riak:/sbin/nologin
+
+ESXENGTOOLS
+hacluster:x:90:90:heartbeat processes:/var/lib/heartbeat/cores/hacluster:/bin/false
+CAAdmin:x:1024:100:CA Admin:/home/CAAdmin:/bin/bash
+amiller:x:1030:100::/home/amiller:/bin/bash
+bnsander:x:1022:100:Baron Sanders:/home/bnsander:/bin/bash
+carogers:x:1006:100:Cynthia Rogers:/home/carogers:/bin/bash
+cwalker:x:1034:100::/home/cwalker/:/bin/bash
+dherring:x:1005:100:Daniel Herring:/home/dherring:/bin/bash
+grodrigu:x:1012:100:Gabriel Rodriguez:/home/grodrigu:/bin/bash
+hcook:x:1023:100:Rick Cook:/home/hcook:/bin/bash
+jcorneli:x:1014:100:John Cornelius:/home/jcorneli:/bin/bash
+jgoerner:x:1019:100:Jeremy Goerner:/home/jgoerner:/bin/bash
+jhuckaba:x:1003:100:Jason Huckaba:/home/jhuckaba:/bin/bash
+jhundt:x:1016:100:Justin Hundt:/home/jhundt:/bin/bash
+jpearson:x:1028:100:Tim Pearson:/home/jpearson:/bin/bash
+jrektori:x:1033:100:Jay Rektorik:/home/jrektori:/bin/bash
+jwilkins:x:1031:100::/home/jwilkins:/bin/bash
+keith:x:1026:100:Keith Grandin:/home/keith:/bin/bash
+kgrandin:x:1013:100:Keith Grandin:/home/kgrandin:/bin/bash
+klocwork:x:1009:100:KlocWork:/home/klocwork:/bin/bash
+lsmother:x:1021:100:Lewis Smotherman:/home/lsmother:/bin/bash
+mike:x:1025:100:Mike Robb:/home/mike:/bin/bash
+mjones:x:1017:100:Mitch Jones:/home/mjones:/bin/bash
+nfoster:x:1011:1003:Nicholaus Foster:/home/nfoster:/bin/bash
+rjohnson:x:1020:100:Robyn Johnson:/home/rjohnson:/bin/bash
+rt:x:1008:1000:::
+rt2_tool:x:1004:100:rt2_tool:/home/rt2_tool:/bin/bash
+rt_tool:x:1015:100::/home/rt_tool:/bin/bash
+rwright:x:1018:100:Reatina Wright:/home/rwright:/bin/bash
+sbruman:x:1010:100:Shawn M. Bruman:/home/sbruman:/bin/bash
+sospina:x:1027:100:Steven Ospina:/home/sospina:/bin/bash
+vtaylor:x:1035:100:Victor Taylor:/home/vtaylor:/bin/bash
+webadmin:x:1001:100:WebAdmin:/home/webadmin:/bin/bash
+wgreenwa:x:1002:100:Will Greenway:/home/wgreenwa:/bin/bash
+wmachalica:x:1029:100:Wes Machalica:/home/wmachalica:/bin/bash
+wseaman:x:1036:100::/home/wseaman:/bin/bash
+
+RAPTOR
+vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+pcap:x:77:77::/var/arpwatch:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+avahi-autoipd:x:100:101:avahi-autoipd:/var/lib/avahi-autoipd:/sbin/nologin
+distcache:x:94:94:Distcache:/:/sbin/nologin
+postgres:x:26:26:PostgreSQL Server:/var/lib/pgsql:/bin/bash
+webalizer:x:67:67:Webalizer:/var/www/usage:/sbin/nologin
+dovecot:x:97:97:dovecot:/usr/libexec/dovecot:/sbin/nologin
+named:x:25:25:Named:/var/named:/sbin/nologin
+gdm:x:42:42::/var/gdm:/sbin/nologin
+sabayon:x:86:86:Sabayon user:/home/sabayon:/sbin/nologin
+oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin
+cardwell:x:1094:100:Sam Cardwell:/home/cardwell:/bin/bash
+hlam:x:1107:100:Hai Lam:/home/hlam:/bin/bash
+tavana:x:2814:100:Shidan Tavana:/home/tavana:/bin/bash
+V5build:x:3106:100:V5build:/home/V5build:/bin/bash
+barrett:x:1053:100:V5build:/home/barrett:/bin/bash
+rothrock:x:1216:100:Scott Rothrock:/home/rothrock:/bin/bash
+idm9bld:x:4000:100:idm9bld:/home/idm9bld:/bin/bash
+eurocopter:x:60017:100:eurocopter:/home/eurocopter:/bin/bash
+uae:x:60018:100:uae:/home/uae:/bin/bash
+idm70builder:x:60012:100:idm70builder:/home/idm70builder:/bin/bash
+stutts:x:1045:100:Chris Stutts:/home/stutts:/bin/bash
+gsmith:x:32016:100:Greg Smith:/home/gsmith:/bin/bash
+hayes:x:1186:100:Allan Hayes:/home/hayes:/bin/bash
+guzzi:x:1150:100:Angela Guzzi:/home/guzzi:/bin/bash
+vobadm:x:1000:100:VOB Administrator:/home/vobadm:/bin/bash
+tester:x:2817:100:tester:/home/tester:/bin/bash
+mott:x:32013:100:Ned Mott:/home/mott:/bin/bash
+watanabe:x:1315:100:Darryl Watanabe:/home/watanabe:/bin/bash
+sjames:x:1327:100:Scott James:/home/sjames:/bin/bash
+jlehew:x:10500:100:Joshua Lehew:/home/jlehew:/bin/bash
+rdaniels:x:1329:100:Ryan Daniels:/home/rdaniels:/bin/bash
+xu:x:11174:100:Fang Xu:/home/xu:/bin/bash
+idmsim:x:5555:100:IDM Simulator:/home/idmsim:/bin/bash
+asdcbld:x:60091:100::/home/asdcbld:/bin/bash
+milano:x:2821:2501:Scott Milano:/home/milano:/bin/bash
+
+SOLO
+barrett:x:1053:1:Rich Barrett:/home/barrett:/bin/tcsh
+rogers:x:1025:1:Doug Rogers:/home/rogers:/bin/bash
+tavana:x:2814:1:Shidan Tavana:/home/tavana:/bin/tcsh
+seeger:x:1138:1:Joe Seeger:/home/seeger:/bin/bash
+nielsen:x:1222:1:Jens Nielsen:/home/nielsen:/bin/tcsh
+salvano:x:1235:1:Dan Salvano:/home/salvano:/bin/tcsh
+bbuser:x:60010:100:Big Brother Account:/home/bbuser:/bin/bash
+mkpcidm:x:7000:1:PCIDM Build Login:/home/mkpcidm:/bin/tcsh
+briskin:x:2223:100::/home/briskin:/bin/tcsh
+patel:x:1279:100:Priti Patel:/home/patel:/bin/bash
+bomberger:x:32012:100:Brock Bomberger:/home/bomberger:/bin/bash
+han:x:1123:1::/home/han:/bin/tcsh
+idm9bld:x:4000:1:IDM 9 Builder:/home/idm9bld:/bin/bash
+svnadmin:x:7001:0:Subversion Administrator:/home/svnadmin:/bin/bash
+overton:x:294:100:Ed Overton:/home/overton:/bin/bash
+sshd:x:60011:203:sshd privsep:/var/empty:/bin/false
+sriddle:x:32048:100:Stephen Riddle:/home/sriddle:/bin/bash
+yan:x:28921:100:Ray Yan:/home/yan:/bin/bash
+wseaman:x:60012:100::/export/home/wseaman/:/bin/bash
+
+LINTEST
+zope:x:64:102:Zope:/opt/zope:/bin/false
+pop:x:67:100:POP admin:/var/lib/pop:/bin/false
+tomcat:x:100:101:Tomcat - Apache Servlet/JSP Engine:/usr/share/tomcat:/bin/bash
+privoxy:x:102:104:Daemon user for privoxy:/var/lib/privoxy:/bin/false
+vdr:x:104:33:Video Disk Recorder:/var/spool/video:/bin/false
+distcc:x:105:106:Distcc Daemon:/etc/distcc:/bin/false
+rozark:x:1000:100:Robert Ozark:/home/rozark:/bin/bash
+webmaster:x:1001:8:webmaster:/home/webmaster:/bin/bash
+hheard:x:1002:0:Harold Heard:/home/hheard:
+
+ESXSLES
+hacluster:x:90:90:heartbeat processes:/var/lib/heartbeat/cores/hacluster:/bin/false
+CCADMIN:x:1009:1002:ClearCase Administrator:/home/CCADMIN:/bin/bash
+acheung:x:1012:1003:Arlene Cheung:/home/acheung:/bin/bash
+adas:x:1054:1003:Das Amitabha:/home/adas:/bin/bash
+ahernandez:x:1078:1003:Anthony Hernandez:/home/ahernandez:/bin/bash
+ahull:x:1067:100:Andrew Hull:/home/ahull:/bin/bash
+amiller:x:1082:1003:Austin Miller:/home/amiller:/bin/bash
+bbuce:x:1070:100:Brad Buce:/home/bbuce:/bin/bash
+btran:x:1059:100:Brian Tran:/home/btran:/bin/bash
+carogers:x:1030:100:Cynthia Rogers:/home/carogers:/bin/bash
+ccoffin:x:1028:1007:Chris Coffin:/home/ccoffin:/bin/bash
+ccotton:x:1049:1003:Clyde Cotton:/home/ccotton:/bin/bash
+cctest:x:1011:100:Clearcase Test User:/home/cctest:/bin/bash
+clearcase_albd:x:1010:1002:Clearcase Broker Daemon:/home/clearcase_albd:/bin/bash
+dderr:x:1045:1003:David Derr:/home/dderr:/bin/bash
+ddroll:x:1058:1000:Daniel Droll:/home/ddroll:/bin/bash
+dhague:x:1080:100:David Hague:/home/dhague:/bin/bash
+dhanson:x:1043:1003:David Hanson:/home/dhanson:/bin/bash
+dherring:x:1005:2011:Daniel Herring:/home/dherring:/bin/bash
+dlaughli:x:1032:1007:Doug Laughlin:/home/dlaughli:/bin/bash
+dleranth:x:1018:1003:David Leranth:/home/dleranth:/bin/bash
+dopitz:x:1008:100:Derek Opitz:/home/dopitz:/bin/bash
+dstayskal:x:1001:1000:Dann Stayskal:/home/dstayskal:/bin/bash
+ebresie:x:1044:1003:Eric Bresie:/home/ebresie:/bin/bash
+ehereford:x:1076:100:Eric Hereford:/home/ehereford:/bin/bash
+ejacobse:x:1031:1003:Erin Jacobsen:/home/ejacobse:/bin/bash
+ekrohne:x:1055:1007:Ed Krohne:/home/ekrohne:/bin/bash
+eleidhol:x:1072:100:Eric Leidholt:/home/eleidhol:/bin/bash
+gmcreynolds:x:1047:1003:Glen McReynolds:/home/gmcreynolds:/bin/bash
+gnewman:x:1021:1003:Greg Newman:/home/gnewman:/bin/bash
+grodrigu:x:1063:100:Gabriel Rodriguez:/home/grodrigu:/bin/bash
+hcook:x:1071:100:Rick Cook:/home/hcook:/bin/bash
+jbanks:x:1041:100:James Banks:/home/jbanks:/bin/bash
+jcornelius:x:1042:2013:John Cornelius:/home/jcornelius:/bin/bash
+jfonteno:x:1081:100:Jeri Fontenot:/home/jfonteno:/bin/bash
+jgoerner:x:1060:1005:Jeremy Goerner:/home/jgoerner:/bin/csh
+jhuckaba:x:1034:1003:Jason Huckaba:/home/jhuckaba:/bin/bash
+jhundt:x:1073:100:Justin Hundt:/home/jhundt:/bin/bash
+jjankows:x:1007:100:Jim Jankowski:/home/jjankows:/bin/bash
+jlehew:x:1056:100:Joshua Lehew:/home/jlehew:/bin/ksh
+jpearson:x:1053:1003:John Pearson:/home/jpearson:/bin/bash
+jrider:x:1039:100:Jamey Rider:/home/jrider:/bin/bash
+jtran:x:1051:1003:Jennifer Tran:/home/jtran:/bin/bash
+jwilkins:x:1083:1003:John Wilkinson:/home/jwilkins:/bin/bash
+kdavidso:x:1052:100:Karen Davidson:/home/kdavidso:/bin/bash
+kgrandin:x:1000:100:Keith Grandin:/home/kgrandin:/bin/bash
+khawley:x:1069:100:Kevin Hawley:/home/khawley:/bin/bash
+ktrost:x:1023:1007:Kim trost:/home/ktrost:/bin/bash
+lbriggs:x:1033:1003:Leslie Briggs:/home/lbriggs:/bin/bash
+lbutler:x:1002:1003:Larry Butler:/home/lbutler:/bin/bash
+lchyr:x:1066:100:Leigha Chyr:/home/lchyr:/bin/bash
+lkeithley:x:1026:1003:Linda Keithley:/home/lkeithley:/bin/bash
+lsmother:x:1077:1007:Lewis Smotherman:/home/lsmother:/bin/bash
+mambrose:x:1046:2013:Michael Ambrose:/home/mambrose:/bin/bash
+mbridges:x:1027:1003:Melanie Bridges:/home/mbridges:/bin/bash
+mjones:x:1017:1007:Mitch Jones:/home/mjones:/bin/bash
+mlane:x:1064:100:Mark Lane:/home/mlane:/bin/bash
+mrobb:x:1022:1003:Mike Robb:/home/mrobb:/bin/bash
+nstibbens:x:1050:1003:Nancy Stibbens:/home/nstibbens:/bin/bash
+oisaula:x:1065:1003:Oscar Isaula:/home/oisaula:/bin/bash
+pakundi:x:1006:1003:Pavani Akundi:/home/pakundi:/bin/bash
+pallison:x:1075:100:Patrick Allison:/home/pallison:/bin/bash
+proschma:x:1061:100:Pete Roschmann:/home/proschma:/bin/bash
+rwright:x:1074:100:Reatina Write:/home/rwright:/bin/bash
+sbruman:x:1003:1000:Shawn Bruman:/home/sbruman:/bin/bash
+scline:x:1015:1003:Sue Cline:/home/scline:/bin/bash
+sdejournett:x:1004:1000:Stewart DeJournett:/home/sdejournett:/bin/bash
+sharder:x:1038:100:Stephanie Harder:/home/sharder:/bin/bash
+smarsh:x:1024:1003:Steve Marsh:/home/smarsh:/bin/bash
+smcmanus:x:1020:1003:Sid Mcmanus:/home/smcmanus:/bin/bash
+sospina:x:1079:100:Steven Ospina:/home/sospina:/bin/bash
+spatters:x:1016:1007:Scott Patterson:/home/spatters:/bin/bash
+srivera:x:1019:1003:Sandy Rivera:/home/srivera:/bin/bash
+srsmith:x:1057:100:Steve Smith:/home/srsmith:/bin/bash
+tsharpe:x:1040:100:Tim Sharpe:/home/tsharpe:/bin/bash
+uagent:x:1014:2500:BrightStor Agent:/home/uagent:/bin/bash
+useradmin:x:1013:100:User Admin:/home/useradmin:/bin/bash
+vtaylor:x:1062:1003:Victor Taylor:/home/vtaylor:/bin/bash
+vwood:x:1025:1003:Vincent Wood:/home/vwood:/bin/bash
+wgreenwa:x:1037:100:Will Greenway:/home/wgreenwa:/bin/bash
+wmachali:x:1048:1003:Wes Machalica:/home/wmachali:/bin/bash
+wmereck:x:1068:100:Wayne Merick:/home/wmereck:/bin/bash
+
+SHEMP
+ddts:x:1100:10:DDTS Account:/d2/usr/home/ddts:/bin/tcsh
+maturo:x:1172:10:Richard Maturo:/:/bin/tcsh
+builder:x:19999:100:Builder Account:/d2/usr/home/builder:/bin/tcsh
+bbuser:x:60003:100:Big Brother:/d2/usr/home/bbuser:/bin/ksh
+bomberger:x:32012:100:Brock Bomberger:/d2/usr/home/bomberger:/bin/bash
+granado:x:32099:100:Jesse Granado:/d2/home/granado:/bin/bash
+hayes:x:1186:100:Allan Hayes:/d2/usr/home/hayes:/bin/bash
+
+ESAINTEL
+wwwrun:x:30:8:ESAIntel:/var/lib/wwwrun:/bin/false
+archive:x:1001:100:archive:/home/archive:/bin/bash
+webmaster:x:1000:100:webmaster:/home/webmaster:/bin/bash
+tomcat:x:103:106:Tomcat:/usr/share/tomcat5:/bin/sh
+
+IADCMP001
+rtkit:x:105:106:RealtimeKit:/proc:/bin/false
+rothrock:x:1000:2501:rothrock:/home/rothrock:/bin/bash
+watanabe:x:1001:2501::/home/watanabe:/bin/bash
+guzzi:x:1002:2501::/home/guzzi:/bin/bash
+zkang:x:1003:2501::/home/zkang:/bin/bash
+hayes:x:1005:2501::/home/hayes:/bin/bash
+cttran:x:1006:2501::/home/cttran:/bin/bash
+milano:x:2821:2501::/home/milano:/bin/bash
+amaizlin:x:2822:2501::/home/amaizlin:/bin/bash
+maizlin:x:2823:2501::/home/maizlin:/bin/bash
+jberman:x:2824:2501::/home/jberman:/bin/bash
+
+IADCCNASP001
+ais:x:39:39:openais Standards Based Cluster Framework:/sbin/nologin:/sbin/nologin
+nut:x:57:57:Network UPS Tools:/var/lib/ups:/sbin/nologin
+vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin
+emerge:x:70:70:Conary emerge build user:/var/conary/emerge:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+smolt:x:86:86::/usr/share/smolt:/bin/nologin
+openfiler:x:94:94:Openfiler Administrator:/opt/openfiler/:/opt/openfiler/bin/ofconfig
+ofguest:x:96:96:Openfiler Guest User:/mnt/openfiler/:/sbin/nologin
+bacula:x:105:105:Bacula:/var/bacula/:/sbin/nologin
+hacluster:x:106:106:Heartbeat haclient User:/var/lib/heartbeat/cores/hacluster:/sbin/nologin
+nutmon:x:107:107:nut UPS monitoring:/etc/ups/:/sbin/nologin
+sfcb:x:117:117:sfcb user:/:/sbin/nologin
+riak:x:497:497:Riak Server:/var/lib/riak:/sbin/nologin

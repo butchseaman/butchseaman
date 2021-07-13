@@ -1,0 +1,117 @@
+
+#!/bin/bash
+#
+####### This script is for automated restarts of WebSphere
+####### wseaman - 2015.04.06
+####### Added NSM_AE - wseaman 2016.11.18
+#
+#
+clear;echo "";echo ""
+MAIL_LIST=/home/cpe_os_user/usr/local/bin/email_list.txt
+DATE=`date +%Y.%m.%d"_"%H":"%M`
+USERNAME=svc_P8RP_WASAdmin
+PASSWORD=G\$B7sW\.\.qc\"4\/\/\]
+USERNAME1=wasadmin
+PASSWORD1=was\@dmin
+#
+HOSTNAME=`hostname`
+LOG=/tmp/websphere_restart.txt
+STATUS=$?
+#
+echo "Automated restart log notification for $HOSTNAME on $DATE" > $LOG
+echo "" >> $LOG # Space in log file
+#
+#
+#######<>< Start AppServer 01
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/serverStatus.sh server1 -username $USERNAME -password $PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1 -username $USERNAME -password $PASSWORD
+echo " AppSrv01" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log >> $LOG
+sleep 30
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1
+sleep 30
+echo " AppSrv01" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log >> $LOG
+#
+else
+#
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1
+sleep 30
+echo " AppSrv01" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log >> $LOG
+fi
+#
+echo "" >> $LOG # Space in log file
+echo "" >> $LOG # Space in log file
+#
+#
+#######<>< Start AppServer 02
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/serverStatus.sh server1 -username $USERNAME -password $PASSWORD | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/stopServer.sh server1 -username $USERNAME -password $PASSWORD
+echo " AppSrv02" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv02/logs/server1/SystemOut.log >> $LOG
+sleep 30
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/startServer.sh server1
+sleep 30
+echo " AppSrv02" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv02/logs/server1/SystemOut.log >> $LOG
+#
+else
+#
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/startServer.sh server1
+sleep 30
+echo " AppSrv02" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/AppSrv02/logs/server1/SystemOut.log >> $LOG
+fi
+##
+#
+echo "" >> $LOG # Space in log file
+echo "" >> $LOG # Space in log file
+#
+#
+#######<>< Start NSM_AE
+/opt/IBM/WebSphere/AppServer/profiles/NSM_AE/bin/serverStatus.sh server1 -username $USERNAME1 -password $PASSWORD1 | grep "Started"
+if [ $STATUS -eq 0 ] ; then
+/opt/IBM/WebSphere/AppServer/profiles/NSM_AE/bin/stopServer.sh server1 -username $USERNAME1 -password $PASSWORD1
+echo " NSM_AE" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/NSM_AE/logs/server1/SystemOut.log >> $LOG
+sleep 30
+/opt/IBM/WebSphere/AppServer/profiles/NSM_AE/bin/startServer.sh server1
+sleep 30
+echo " NSM_AE" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/NSM_AE/logs/server1/SystemOut.log >> $LOG
+#
+else
+#
+/opt/IBM/WebSphere/AppServer/profiles/NSM_AE/bin/startServer.sh server1
+sleep 30
+echo " AppSrv01" >> $LOG
+tail -1 /opt/IBM/WebSphere/AppServer/profiles/NSM_AE/logs/server1/SystemOut.log >> $LOG
+fi
+##
+##
+##
+####### Verifi AppSrv01 is running
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/serverStatus.sh server1 -username $USERNAME -password $PASSWORD >> $LOG
+##
+echo "" >> $LOG # Space in log file
+##
+##
+####### Verifi AppSrv02 is running
+/opt/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/serverStatus.sh server1 -username $USERNAME -password $PASSWORD >> $LOG
+##
+echo "" >> $LOG # Space in log file
+##
+##
+####### Verifi NSM_AE is running
+/opt/IBM/WebSphere/AppServer/profiles/NSM_AE/bin/serverStatus.sh server1 -username $USERNAME1 -password $PASSWORD1 >> $LOG
+##
+##
+##
+## Email Notification
+for NOTIFY in `cat $MAIL_LIST`
+do
+cat $LOG | mail -s "`hostname` automated restart " $NOTIFY
+done

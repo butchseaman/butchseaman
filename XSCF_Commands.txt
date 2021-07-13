@@ -1,0 +1,332 @@
+
+
+
+M-SERIES eXtended System Control Facility (XSCF) Command Line Guide 
+July 21, 2010 in Sun Hardware
+Tags: configure uni-XSB and Quad XSB, eXtended System Control Facility, M-SERIES XSCF, M-SERIES XSCF Command Line, M4000 XSCF, M5000 XSCF, Quad XSB, uni-XSB, XSCF
+
+
+Hi, sorry if this post is not easy to read, I just copy-paste from my notes:-). Enjoy it..
+
+The Sun SPARC® Enterprise M-series server line is the newest addition to Sun Microsystem’s mid-range (M4000/M5000) and high-end server (M8000/M9000) families. Designed for the enterprise- class datacenter, all members of the server line offer a great deal of configuration flexibility in addition to high performance and reliability.
+
+#########################################################################
+#.  >>switch the prompt from domain console to XSCF console
+
+XSCF>console -d 0    >>swith from XSCF console to domain console
+XSCF>console -d 0 -f    >>swith from XSCF console to domain console with force option
+XSCF>reset -d 0 xir    >>reset/restart domain 0 console
+XSCF>poweroff -d 0    >>power off domain ID 0
+XSCF>poweroff -f -d 0    >>forcibly power off domain ID 0
+
+XSCF>poweroff -a    >>power off all domain together
+XSCF>poweron -a        >>power on all domain
+XSCF>poweron -d 0    >>power on domain ID 0
+
+XSCF>version -c xcp    >>to determine firmware version
+XSCF>switchscf -t Standby
+
+XSCF>snapshot -d usb0    >>save/collect log to USB flash disk
+XSCF>showlogs power
+
+XSCF> setdomainmode -d 0 -m autoboot=on
+XSCF> showdomainmode -d 0
+Host-ID             : 85289956
+Diagnostic Level    : min
+Secure Mode         : on
+Autoboot            : on
+CPU Mode            : auto
+
+
+——————————————————————————–
+TROUBLESHOOTING COMMAND:
+-showhardconf        >>displays information about each FRU
+-showlogs
+-showstatus        >>Displays the information concerning the units failed or degraded
+-fmdump            >>to display the contents of any log files associated with the Solaris fault manager
+-fmadm faulty
+
+——————————————————————————–
+Command used for ADDING & REMOVING DOMAIN:
+setdcl
+setupfru
+addboard
+deleteboard
+moveboard
+
+———————————————————————————–
+
+XSCF> set
+setaltitude        setdualpowerfeed   setntp             setsnmp
+setapcs            setemailreport     setpasswordpolicy  setsnmpusm
+setarchiving       sethostname        setpowerupdelay    setsnmpvacm
+setaudit           sethttps           setprefetchmode    setssh
+setautologout      setldap            setprivileges      setsunmc
+setcod             setlocale          setrci             settelnet
+setdate            setlocator         setrcic            settimezone
+setdcl             setloginlockout    setroute           setupfru
+setdomainmode      setlookup          setservicetag      setupplatform
+setdomparam        setnameserver      setshutdowndelay   
+setdscp            setnetwork         setsmtp            
+XSCF> set
+setaltitude        setdualpowerfeed   setntp             setsnmp
+setapcs            setemailreport     setpasswordpolicy  setsnmpusm
+setarchiving       sethostname        setpowerupdelay    setsnmpvacm
+setaudit           sethttps           setprefetchmode    setssh
+setautologout      setldap            setprivileges      setsunmc
+setcod             setlocale          setrci             settelnet
+setdate            setlocator         setrcic            settimezone
+setdcl             setloginlockout    setroute           setupfru
+setdomainmode      setlookup          setservicetag      setupplatform
+setdomparam        setnameserver      setshutdowndelay   
+setdscp            setnetwork         setsmtp            
+XSCF>    
+Display all 145 possibilities? (y or n)
+addboard            setdate             showdomainmode
+addcodlicense       setdcl              showdomainstatus
+addfru              setdomainmode       showdscp
+adduser             setdomparam         showdualpowerfeed
+applynetwork        setdscp             showemailreport
+cfgdevice           setdualpowerfeed    showenvironment
+clockboard          setemailreport      showfru
+confdidr            sethostname         showhardconf
+console             sethttps            showhostname
+deleteboard         setldap             showhttps
+deletecodlicense    setlocale           showldap
+deletefru           setlocator          showlocale
+deleteuser          setloginlockout     showlocator
+disablemodes        setlookup           showloginlockout
+disableuser         setnameserver       showlogs
+dumpconfig          setnetwork          showlookup
+enableescalation    setntp              showmodes
+enableservice       setpasswordpolicy   showmonitorlog
+enableuser          setpowerupdelay     shownameserver
+escalation          setprefetchmode     shownetwork
+exit                setprivileges       shownotice
+flashupdate         setrci              showntp
+fmadm               setrcic             showpasswordpolicy
+fmdump              setroute            showpowerupdelay
+fmstat              setservicetag       showprefetchmode
+getflashimage       setshutdowndelay    showresult
+ioxadm              setsmtp             showroute
+man                 setsnmp             showservicetag
+moveboard           setsnmpusm          showshutdowndelay
+nslookup            setsnmpvacm         showsmtp
+password            setssh              showsnmp
+ping                setsunmc            showsnmpusm
+poweroff            settelnet           showsnmpvacm
+poweron             settimezone         showssh
+prtfru              setupfru            showstatus
+rebootxscf          setupplatform       showsunmc
+replacefru          showaltitude        showtelnet
+reset               showapcs            showtimezone
+resetdateoffset     showarchiving       showuser
+restoreconfig       showaudit           snapshot
+restoredefaults     showautologout      switchscf
+sendbreak           showboards          testsb
+service             showcod             traceroute
+setaltitude         showcodlicense      unlockmaintenance
+setapcs             showcodusage        version
+setarchiving        showconsolepath     viewaudit
+setaudit            showdate            who
+setautologout       showdcl             
+setcod              showdevices         
+
+-----------------------------------------------------------------------------------OTHER COMMAND:
+adduser
+applynetwork         >reset XSCF to reflect information that has been set for the XSCF network
+console
+exit
+
+cfgdevice                    >connect the CD-RW/DVD-RW drive unit and the tape drive unit to the port, disconnect it from the port, or display the status of the drive
+XSCF> cfgdevice -l
+XSCF> cfgdevice -c attach -p 0-0
+XSCF> cfgdevice -f -c detach -p 0-0    >Disconnects the DVD drive/tape drive unit from the port 0-0.
+
+XSCF> cfgdevice -y -c attach -p 0-0    >Connects the DVD drive/tape drive unit to port 0-0 when the system is being powered on.  Automatically answers “y” to all prompts.
+XSCF> cfgdevice -q -y -c attach -p 0-0    >answer ‘y’ to all prompts without displaying message
+
+deleteuser
+dumpconfig/restoreconfig            >>save/restore XSCF configuration
+XSCF> dumpconfig file:///media/usb_msd/backup-file.txt
+XSCF> dumpconfig ftp://server/backup/backup-sca-ff2-16.txt
+XSCF> restoreconfig file:///media/usb_msd/backup-file.txt
+
+fmadm
+fmadm faulty                >>
+fmdump                        >view fault management logs
+Exp.
+XSCF> fmdump
+Sep 29 15:09:25.4335 8cec9a83-e2a3-4dc3-a7cd-de01caef5c63 FMD-8000-4M
+Sep 29 15:10:09.6151 5f88d7d5-a107-4435-99c9-7c59479d22ed FMD-8000-58
+
+[Display Very Verbose Event Detail for the Last UUID:
+XSCF> fmdump -e -V -u 5f88d7d5-a107-4435-99c9-7c5947 9d22ed
+
+XSCF> fmdump  -m -M            >>Displaying Contents of the Fault Manager syslog Message
+
+flashupdate    >update firmware
+getflashimage    >download a firmware image file
+XSCF> getflashimage http://imageserver/images/FFXCP1041.tar.gz
+XSCF> getflashimage ftp://imageserver/images/FFXCP1041.tar.gz
+
+moveboard    >move XSB from current domain to another
+poweron
+poweroff
+prtfru
+XSCF> prtfru -c system-board
+
+rebootxscf        >reset the XSCF
+
+replacefru        >
+
+reset            >reset the specific domain; use this command only for the purpose of recovery, such as if OS hang
+senddbreak        >send a break signal to the specified domain
+XSCF> sendbreak -d 0
+setautologout
+setdate
+setdate -u -s 012707592006.00    >>Sets “January 27 07:59:00 2006? of UTC as the current time
+
+setdomainmode
+sethostname
+sethttps
+setnetwork
+setntp
+setroute
+settelnet
+setssh
+XSCF> setssh -c enable
+
+setprivileges
+XSCF> setprivileges aziz filedeng
+
+showconsolepath
+showdate
+showdevice
+showdevice -d 0
+
+showboards        >check the XSB number, domain ID, LSB number, XSB status
+XSCF>showboards -a
+
+showdcl            >check domain ID, LSB number, configuration policy
+XSCF>showdcl -va
+
+showdomainmode
+showdomainstatus -a    >check the power status of the system
+showenvironment        >display the intake air temperature and humidity, temperature sensor information, voltage sensor
+showfru            >display the hardware settings of specified device
+showhardconf        >display information about field replaceable unit (FRU)
+showlogs        >display the specific log
+XSCF>showlogs event
+XSCF>showlogs error -v
+XSCF>showlogs power
+XSCF>showlogs monitor
+XSCF>showlogs console
+
+showstatus
+showmonitorlog        >display the contents of monitoring messages in real time
+shownetwork -a         >display information of network interfaces for XSCF
+showuser
+snapshot        >collect and transfer environtment, log, error, and FRUID data
+switchscf        >switch the XSCF unit between the active and standby states
+testsb             >perform an initial diagnosis of the specified physical system board (PSB
+
+————————————————————————————–
+REPLACE INTERNAL TAPE:
+
+1. unconfigure tape drive from OS
+# cfgadm -a
+c0::rmt/0 tape connected configured unknown
+# cfgadm -c unconfigure c0::rmt/0
+
+Stop the connection to the CD-RW/DVD-RW drive unit on the same controller
+as the target tape drive unit
+
+#cfgadm -a
+c0::dsk/c0t4d0 CD-ROM connected configured unknown
+#cfgadm -c unconfigure c0::dsk/c0t4d0
+# cfgadm -a
+c0::dsk/c0t4d0 CD-ROM connected unconfigured unknown
+c0::rmt/0 tape        connected unconfigured unknown
+
+2. Detach the target tape drive unit from the port
+XSVF> cfgdevice -c detach -p <port no.> command
+3. Confirm that the target tape drive unit is unconfigured from the domain.
+cfgdevice -l
+4. Remove the tape drive unit
+5. Mount the replacement tape drive unit
+6. Attach the tape drive unit to the port
+XSCF> cfgdevice -c attach -p <port no.>
+7. Confirm that the target tape drive unit is configured from the domain.
+XSCF> cfgdevice -l
+
+8. from OS, execute command ‘cfgadm -c configure TAPE_Ap_Id’ to configure tape drive
+#cfgadm -c configure c0::rmt/0
+
+9. from OS< execute command ‘cfgadm -c configure DVD_Ap_Id’ to configure DVD drive
+#cfgadm -c configure c0::dsk/c0t4d0
+
+10. execute ‘cfgadm -al’ to verify the status of tape drive and DVD drive
+
+————————————————————————–
+NOTE:
+PSB (Physical System Board)
+XSB (Extended System Board)
+
+A PSB that is logically divided into one part (no division) is called a Uni-XSB, and a PSB that is logically divided into four parts is called a Quad-XSB. On Quad-XSB configuration; ONE XSB CONTAIN TWO PCI SLOT
+
+——————————————————————————–
+
+
+addboard                  setdate                   showdateoffset
+addcodactivation          setdcl                    showdcl
+addcodlicense             setdomainmode             showdevices
+addfru                    setdomparam               showdomainmode
+adduser                   setdscp                   showdomainstatus
+applynetwork              setdualpowerfeed          showdscp
+cfgdevice                 setemailreport            showdualpowerfeed
+clockboard                sethostname               showemailreport
+confdidr                  sethttps                  showenvironment
+console                   setldap                   showfru
+deleteboard               setldapssl                showhardconf
+deletecodactivation       setlocale                 showhostname
+deletecodlicense          setlocator                showhttps
+deletefru                 setloginlockout           showldap
+deleteuser                setlookup                 showldapssl
+disablemodes              setnameserver             showlocale
+disableuser               setnetwork                showlocator
+dumpconfig                setntp                    showloginlockout
+enableescalation          setpacketfilters          showlogs
+enableservice             setpasswordpolicy         showlookup
+enableuser                setpowerupdelay           showmodes
+escalation                setprefetchmode           showmonitorlog
+exit                      setprivileges             shownameserver
+flashupdate               setrci                    shownetwork
+fmadm                     setrcic                   shownotice
+fmdump                    setroute                  showntp
+fmstat                    setservicetag             showpacketfilters
+getflashimage             setshutdowndelay          showpasswordpolicy
+ioxadm                    setsmtp                   showpowerupdelay
+man                       setsnmp                   showprefetchmode
+moveboard                 setsnmpusm                showresult
+nslookup                  setsnmpvacm               showroute
+password                  setssh                    showservicetag
+ping                      setsunmc                  showshutdowndelay
+poweroff                  settelnet                 showsmtp
+poweron                   settimezone               showsnmp
+prtfru                    setupfru                  showsnmpusm
+rebootxscf                setupplatform             showsnmpvacm
+replacefru                showad                    showssh
+reset                     showaltitude              showstatus
+resetdateoffset           showapcs                  showsunmc
+restoreconfig             showarchiving             showtelnet
+restoredefaults           showaudit                 showtimezone
+sendbreak                 showautologout            showuser
+service                   showboards                snapshot
+setad                     showcod                   switchscf
+setaltitude               showcodactivation         testsb
+setapcs                   showcodactivationhistory  traceroute
+setarchiving              showcodlicense            unlockmaintenance
+setaudit                  showcodusage              version
+setautologout             showconsolepath           viewaudit
+setcod                    showdate                  who

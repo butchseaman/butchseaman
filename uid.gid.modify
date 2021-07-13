@@ -1,0 +1,49 @@
+#!/bin/bash
+#set -x
+#
+clear;echo "";echo "" ;echo "";
+INFOCORRECT=n
+#
+read -p "Enter useer id : " USERID
+echo ""
+echo "Current UID : `grep $USERID /etc/passwd`"
+echo ""
+echo "Current GID : `grep $USERID /etc/group`"
+echo ""
+read -p "Is this information correct ?: " INFOCORRECT
+if [ $INFOCORRECT != "y" ] ; then
+echo "";echo "Exiting ...";echo ""
+exit 0
+fi
+#
+echo ""
+read -p "$USERID Old UID : " OLDUID
+read -p "$USERID Old GID : " OLDGID
+read -p "$USERID New UID : " NEWUID
+read -p "$USERID New GID : " NEWGID
+echo "";echo ""
+echo "__________________________________"
+echo "";echo ""
+echo "This will modify UID and GID for $USERID using the following information :"
+echo ""
+echo "Old UID :"         $OLDUID
+echo "Old GID :"         $OLDGID
+echo "New UID :"         $NEWUID
+echo "New GID :"         $NEWGID
+
+
+usermod -u $NEWUID $USERID
+#
+groupmod -g $NEWGID $USERID
+#
+find / -group $OLDUID  -exec chgrp -h $USERID {} \;
+#
+find / -group $OLDGID -exec chown -h $USERID {} \;
+#
+echo "";echo "";echo ""
+ls -al /home/$USERID
+id -u $USERID
+id -g $USERID
+grep $USERID /etc/passwd
+grep $USERID /etc/group
+echo "";echo "Exiting ...";echo ""

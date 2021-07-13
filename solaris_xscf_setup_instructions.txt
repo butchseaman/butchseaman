@@ -1,0 +1,116 @@
+Setup M3000
+Initial Login
+You will need to connect to the service processors serial port at 9600,8,N,1,None (serial settings) (Baud rate: 9600 bps, Data length: 8 bit, No parity, STOP bit: 1 bit,No flow control, Delay: Except for 0) 
+
+1. Log in to the XSCF console with the default login name from a terminal device connected to the Service Processor. You must have physical access to the system. 
+
+serial port log-in prompt: default
+follow Instructions
+
+Toggle the MODE switch using one of two methods, as follows:
+
+    * If the switch is in the Service position, turn it to the Locked position, leave it there for at least five seconds, and then turn it back to the Service position. Press the Enter key.
+
+    * If the switch is in the Locked position, turn it to the Service position, leave it there for at least five seconds, and then turn it back to the Locked position. Press the Enter key.
+
+When the toggling is successful, you are logged in to the Service Processor shell as the account default.\\
+XSCF>check Firmware:
+XSCF> version -c xcpNow you are ready to configure the XSCF (service processor) 
+
+
+
+
+You can use setupplatform for the complete configuration 
+or do it manually…. 
+
+
+Add Adminuser
+adduser yourusername
+setprivilieges yourusername useradm platadm
+password yourusername
+confirm password
+
+exit from defaultuser
+login as yourusersetup DSCP network
+log into the XSCF as platadm or fieldeng. 
+
+The syntax is: 
+
+XSCF> setdscp -y -i address -m netmask
+
+For example:
+XSCF> setdscp -y -i 10.2.2.0 -m 255.255.255.0 or you can just type, setdscp on its own. 
+
+XSCF> setdscp
+DSCP network [0.0.0.0] > 10.2.2.0
+DSCP netmask [255.0.0.0] > 255.255.255.0
+XSCF address [10.1.1.1] > [Enter]
+Domain #00 address [10.2.2.2] > [Enter]
+Domain #01 address [10.2.2.3] > [Enter]
+Domain #02 address [10.2.2.4] > [Enter]
+...
+
+Commit these changes to the database (y|n)? yTo display dscp network configuration, log in to the XSCF console with platadm, platop, or fieldeng privileges, or domainadm, domainop, or domainmgr privileges for a specific domain.
+
+
+XSCF> showdscp
+DSCP Configuration:
+Network: 10.2.2.0
+Netmask: 255.255.255.0
+Location Address
+XSCF 10.2.2.1
+Domain #00 10.2.2.2
+Domain #01 10.2.2.3
+.....Setup network settings for the XSCF network
+The service processor must be restarted for the setting to become activated. Log in with platadm user 
+
+The syntax is: 
+
+XSCF> setnetwork interface [-m addr] address
+
+For example the following sets the network information for interface xscf#1-lan#0
+
+XSCF> setnetwork xscf#1-lan#0 -m 255.255.255.0 192.168.150.20To enable the interface 
+
+The syntax is:
+XSCF> setnetwork -c [up|down] interface
+
+For example
+XSCF> setnetwork -c up xscf#1-lan#0To setup the network route: 
+
+The syntax is:
+XSCF> setroute -c [add|del] -n address [-m address] [-g address] interfaceTo apply the configuration to the XSCF network.
+
+
+XSCF> applynetwork
+
+use shownetwork to verify settings:
+
+XSCF> shownetwork -a | interface
+To set the service processor hostname.
+The syntax is:
+XSCF> sethostname xscfu hostname
+
+Where the xscfu is xscf#0 or xscf#1To set the service processors DNS
+The syntax is:
+XSCF> sethostname -d domainname
+
+To verify hostname use showhostname, the syntax is:
+XSCF> showhostname -a | xscfu
+
+To set the service processors DNS name server address
+
+the syntax is:
+XSCF> setnameserver ip_address
+
+Verify using:
+XSCF> shownameserver
+
+===== Configure ssh =====
+
+(this command will take awhile):
+<code>
+setssh -c enable -yNow you should be ready to reset the xscf to make your changes take effect. 
+
+rebootxscf -yAfter a few minutes you should be able to ping and ssh into the xscf using the username and password you just created. 
+

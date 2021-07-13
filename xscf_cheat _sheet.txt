@@ -1,0 +1,275 @@
+XSCF Command Cheat Sheet
+
+
+
+adduser – Creates an XSCF user account.
+
+deleteuser – Deletes an XSCF user account.
+
+disableuser – Disables an XSCF user account
+
+enableuser – Enables an XSCF user account.
+
+showuser – Displays XSCF user account information
+
+password – Changes an XSCF user account password.
+
+setpasswordpolicy – Configures the XSCF password policy.
+
+showpasswordpolicy – Displays the XSCF password policy.
+
+setprivileges – Assigns user privileges.
+
+setloginlockout – Configures the lockout of user accounts.
+
+showloginlockout – Displays the lockout setting of user accounts.
+
+setnetwork – Configures the XSCF network.
+
+shownetwork – Displays the XSCF network settings and XSCF-LAN network status.
+
+setroute – Configures the XSCF-LAN route.
+
+showroute – Displays XSCF-LAN route settings.
+
+sethostname – Specifies the XSCF-LAN host name and domain name.
+
+showhostname – Displays the XSCF-LAN host name and domain name.
+
+setnameserver – Sets a name server (DNS) with XSCF.
+
+shownameserver – Displays the XSCF name server(s).
+
+applynetwork – Applies the network settings.
+
+setdscp – Configures DSCP.
+
+showdscp – Displays the DSCP settings.
+
+nslookup – Checks for the name resolution of a host name.
+
+ping – Checks the response for a host.
+
+traceroute – Displays the network path to the host by list.
+
+settimezone – Specifies the time zone.
+
+showtimezone – Displays the time zone setting.
+
+setdate – Sets the XSCF time.
+
+showdate – Displays the XSCF time.
+
+setntp – Configures the NTP server.
+
+showntp – Displays the SSH settings and fingerprint.
+
+resetdateoffset – Resets the time subtraction between the XSCF and the domain.
+
+showdateoffset – Displays the time subtraction between the XSCF and the domain.
+
+setssh – Configures SSH, Generates RSA and DSA keys for SSH2 host authentication.
+
+showssh – Displays the SSH settings.
+
+settelnet – Configures telnet.
+
+showtelnet – Displays the telnet settings.
+
+setautologout – Sets the session timeout time of the XSCF Shell.
+
+showautologout – Displays the session timeout time of the XSCF Shell.
+
+setsmtp – Configures the SMTP server.
+
+showsmtp – Displays the the SMTP server settings.
+
+setemailreport – Configures mail notification.
+
+showemailreport – Displays the mail notification settings.
+
+setlookup – Enables or disables the use of an LDAP server.
+
+showlookup – Displays information about whether an LDAP server is used.
+
+setldap – Configures LDAP client settings.
+
+showldap – Displays LDAP client settings.
+
+sethttps – Configures the https settings.
+
+showhttps – Displays the https settings.
+
+setupplatform – Configures the log archiving function of XSCF.
+
+showarchiving – Displays the settings of the log archiving function of XSCF.
+
+setaudit – Configures the auditing of XSCF.
+
+showaudit – Displays the settings of the audit of XSCF.
+
+viewaudit – Displays the audit records (Audit trail) of XSCF.
+
+setsnmp – Configures the SNMP Agent.
+
+showsnmp – Displays the SNMP Agent settings.
+
+setsnmpusm – Configures the USM management information for the SNMP agent.
+
+showsnmpusm – Displays the USM management information for the SNMP agent.
+
+setsnmpvacm – Configures the VACM management information for the SNMP agent.
+
+showsnmpvacm – Displays the VACM management information for the SNMP agent.
+
+setsunmc – Start or stop the Sun Management Center agent and make changes to its configuration.
+
+showsunmc – Show setup information and status of Sun Management Center agent.
+
+setdcl – Specifies the domain configuration information (DCL).
+
+showdcl – Displays the domain configuration information.
+
+showboards – Displays the component information and the COD information about a system board.
+
+showdevices – Displays the domain information specified for a system board.
+
+showdomainstatus – Displays the domain status.
+
+setupfru – Specifies the number of XSB partitions of the system board and sets the memory mirror mode.
+
+showfru – Displays the specified number of XSB partitions of the system board and the memory mirror mode that is set.
+
+Example:
+Displays the settings of all PSBs.
+XSCF> showfru -a sb
+Device Location XSB Mode Memory Mirror Mode
+sb 00 Quad no
+testsb – Diagnoses the system board.
+
+addboard – Adds a system board to a domain.
+
+deleteboard – Deletes a system board from a domain.
+
+moveboard – Moves a system board to another domain.
+
+replacefru – Replaces a CPU/Memory Board unit, I/O unit, fan unit, PSU, or XSCFi.
+
+addfru – Installs a CPU/Memory Board unit, I/O unit, fan unit, or PSU.
+
+deletefru – Removes a CPU/Memory Board unit or I/O unit.
+
+setdomainmode – Sets a hardware initial diagnostic level (No, standard, maximum).
+Enables or disables break signal sending, host watchdog, automatic boot, and sets CPU operation mode.
+
+showdomainmode – Displays the domain host ID, the hardware initial diagnostic level, information of enabled or disabled status on break signal sending, Host watchdog, automatic boot, and displays CPU operation mode, ethernet address, mac address.
+
+sendbreak – Sends a break signal to the server.
+
+showresult – Displays the exit status of the most recently executed command.
+
+setlocale – Sets locale.
+
+showlocale – Displays locale.
+
+setaltitude – Sets altitude.
+
+showaltitude – Displays altitude.
+
+cfgdevice – Sets/Displays the connection destination/status of the DVD drive, tape drive. 
+
+addcodlicense – Applies the obtained COD license key to the system.
+
+deletecodlicense – Deletes the license key applied to the system.
+
+showcodlicense – Displays the license keys applied to the system.
+
+showcodusage – Displays license usage information.
+
+setcod – Configures COD settings.
+
+showcod – Displays COD settings.
+
+console – Connects to a domain console.
+
+showconsolepath – Displays the operating status of the main console.
+
+showenvironment – Displays the temperature, humidity, voltage, fan rotation speed, power consumption, and exhaust airflow.
+
+showstatus – Lists degraded components.
+
+showhardconf – Displays all components mounted in the server.
+
+poweron – Turns on power to all domains or the specified domain.
+
+poweroff – Turns off power to all domains or the specified domain.
+
+reset – Resets the specified domain.
+
+The following three reset modes are available:
+
+por: Domain system reset
+request: Domain panic instruction
+xir: Domain CPU reset
+setpowerupdelay – Sets the warm-up time and the air-conditioning wait time.
+
+showpowerupdelay – Displays the warm-up time and the air-conditioning wait time settings.
+
+setshutdowndelay – Sets the UPS shutdown delay time at power failure.
+
+showshutdowndelay – Displays the UPS shutdown delay time at power failure.
+
+setdualpowerfeed – Sets the dual power feed.
+
+showdualpowerfeed – Displays the dual power feed.
+
+setlocator – Enables or disables the CHECK LED blinking.
+
+showlocator – Displays the LED status.
+
+switchscf – Switches the XSCF Unit state (Active/Standby).
+
+ioxadm – Configures/Displays the External I/O Expansion Unit settings(IOBOX).
+
+clockboard – Sets/Displays the number of clock unit (CLKU) used when the next platform is powered on.
+
+setdomparam – Rewrites the OpenBoot PROM environment variable that is compulsory.
+
+getflashimage – Gets the firmware update program.
+
+flashupdate – Updates the firmware program.
+
+version – Displays XCP, XSCF, and OpenBoot versions.
+
+prtfru – Displays the FRU-ROM data.
+
+dumpconfig – Saves XSCF configuration information to the specified destination.
+
+restoreconfig – Restores XSCF configuration information from the specified destination.
+
+restoredefaults – Initialises the server or XSCF to the factory defaults.
+
+snapshot – Saves log information to the specified destination.
+
+showmonitorlog – Displays the XSCF monitoring messages on console in real time.
+
+showlogs – Displays the error log, power log, event log, console log, panic log, IPL log, temperature/humidity log, and monitor message log.
+
+fmadm – Monitors/controls the Fault Management Diagnosis Engines (FMDE).
+
+fmdump – Dumps the fault event log containing FM diagnosis results.
+
+fmstat – Displays the FMDE status.
+
+unlockmaintenance – Forcibly release the locked status of the XSCF.
+
+rebootxscf – Reboots/Resets the XSCF.
+
+who – Displays users who login to the XSCF.
+
+man – Displays the man page of the specified command.
+
+You can see this list of commands by executing man intro.
+
+exit – Ends the XSCF Shell.
+

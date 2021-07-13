@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+txtrst=$(tput sgr0) # Text reset
+txtbld=$(tput bold)
+txtred=$(tput setaf 1) # Red
+txtgrn=$(tput setaf 2) # Green
+txtylw=$(tput setaf 3) # Yellow
+txtblu=$(tput setaf 4) # Blue
+txtpur=$(tput setaf 5) # Purple
+txtcyn=$(tput setaf 6) # Cyan
+txtwht=$(tput setaf 7) # White
+#
+DATE=`date +%Y.%m.%d"_"%H":"%M`
+trap 'rm /tmp/error$DATE' 0 2
+#touch /tmp/error$DATE
+echo ${txtcyn}"Script exected at ${txtbld}$DATE"${txtrst}${txtrst} >> /tmp/error$DATE
+read -p "Enter to continue"
+echo ""
+echo ${txtylw}"This is a first line${txtrst}"
+echo ""
+cat /tmp/error$DATE
+echo ""
+echo "This is a third line"
+echo ""
+echo $0
+exit 0
+

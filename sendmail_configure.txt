@@ -1,0 +1,13 @@
+SENDMAIL CONFIGURE 
+
+/etc/mail/sendmail.mc - define(`SMART_HOST', `ftwclient.esa.local')
+/etc/mail/local-host-names - domain name
+/etc/mail/submit.mc - FEATURE(`msp', `mail.domain.com.au')
+service sendmail restart
+
+m4 /etc/mail/sendmail.mc > /etc/sendmail.cf
+
+
+rpm -ivh --test sendmail.cf.x.y.z.rpm
+
+
