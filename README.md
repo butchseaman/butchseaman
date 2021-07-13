@@ -1,4 +1,3 @@
-I’m @butchseaman
 
 How to reach me butch.seaman@mrcooper.com
 
