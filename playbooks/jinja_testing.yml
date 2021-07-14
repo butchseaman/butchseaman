@@ -1,0 +1,15 @@
+---
+ - hosts: 
+     - cradmlnx02.chec.local
+     - cradmlnx01.chec.local
+
+   become: true
+   become_user: root
+   gather_facts: true
+
+   tasks:
+    - name: push a new index config file
+      template:
+         src: /tmp/index.html.j2
+         dest: /var/www/html/index.html
+         mode: 0775
